@@ -2,6 +2,8 @@ const Home =()=>import("@/views/Home")
 const BakingRing =()=>import("@/views/BakingRing")
 const Personal =()=>import("@/views/Personal")
 const QA =()=>import("@/views/QA")
+const university =()=>import("@/views/VideoSchool")
+
 
 
 export default[
@@ -41,4 +43,14 @@ export default[
             isActive:3
         }
     },
+    {
+        
+        name:'university',
+        path:'/university',
+        component: university,
+        meta:{
+            isHideFooter: true,
+           
+        }
+    }
 ]

@@ -17,6 +17,7 @@ footer
 body{
   background-color:#fff;
   
+  
 }
 
 </style>
