@@ -29,3 +29,5 @@ export const reqUniversityItem_lwx=(id)=>ajax.get('/index/getIndexItem',{
         categoryId: id
     }
 })
+/*******************************新手教程nyt*******************************/
+export const reqNewCourse_nyt=()=>ajax('education/getCourse?educationCourseId=10533')

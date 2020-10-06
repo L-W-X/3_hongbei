@@ -3,8 +3,10 @@ const BakingRing =()=>import("@/views/BakingRing")
 const Personal =()=>import("@/views/Personal")
 const QA =()=>import("@/views/QA")
 const university =()=>import("@/views/VideoSchool")
-
-
+const newcourse = ()=>import("@/views/NewCourse")
+// const CourseInduce = ()=>import("@/views/NewCourse/CourseInduce")
+// const CourseList = ()=>import("@/views/NewCourse/CourseList")
+// const StudentWork = ()=>import("@/views/NewCourse/StudentWork")
 
 export default[
     {
@@ -52,5 +54,39 @@ export default[
             isHideFooter: true,
            
         }
+    },
+    {
+        
+        name:'newcourse',
+        path:'/newcourse',
+        component: newcourse,
+        meta:{
+            isHideFooter: true,
+           
+        }
+        // children:[
+        //     {path:"/newcourse/CourseInduce",
+        //      component:CourseInduce,
+        //      meta:{
+        //         isHideFooter: true,
+               
+        //     }
+        //     },
+        //     {path:"/newcourse/CourseList",
+        //      component:CourseList,
+        //      meta:{
+        //         isHideFooter: true,
+               
+        //     }
+        //     },
+        //     {path:"/newcourse/StudentWork",
+        //      component:StudentWork,
+        //      meta:{
+        //         isHideFooter: true,
+               
+        //     }
+        //     }
+        // ]
+        
     }
 ]
