@@ -16,9 +16,9 @@
   <nyt1></nyt1>
   <!--tab栏-->
   <div class="tabWrap">
-    <div class="active===i?active:''" @click="change(0)">课程介绍</div>
-    <div class="active===i?active:''" @click="change(1)">课程目录</div>
-    <div class="active===i?active:''" @click="change(2)">学员作业</div>
+    <div :class="active==0?'active':''" @click="change(0)">课程介绍</div>
+    <div :class="active==1?'active':''" @click="change(1)">课程目录</div>
+    <div :class="active==2?'active':''" @click="change(2)">学员作业</div>
   </div>
   <div>
     <CourseInduce v-show="active===0"></CourseInduce>
@@ -93,10 +93,11 @@ export default {
   },
   mounted() {
     this.getReqNewCourse_nyt()
-
+    this.getReqNewCourseItem_nyt()
+    this.getReqNewStudentWork_nyt()
   },
   methods: {
-    ...mapActions(['getReqNewCourse_nyt']),
+    ...mapActions(['getReqNewCourse_nyt', 'getReqNewCourseItem_nyt', 'getReqNewStudentWork_nyt']),
     change(i) {
       this.active = i
     }

@@ -31,3 +31,8 @@ export const reqUniversityItem_lwx=(id)=>ajax.get('/index/getIndexItem',{
 })
 /*******************************新手教程nyt*******************************/
 export const reqNewCourse_nyt=()=>ajax('education/getCourse?educationCourseId=10533')
+// 获取课程目录
+export const reqNewCourseItem_nyt=()=>ajax('education/getSeriesCourse?educationCourseId=10533')
+
+// 获取学员作业
+export const reqNewStudentWork_nyt=()=>ajax('dish/getOutstandingCourseContent?educationCourseId=10533')
