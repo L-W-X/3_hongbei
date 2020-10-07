@@ -5,17 +5,18 @@ const QA =()=>import("@/views/QA")
 const university =()=>import("@/views/VideoSchool")
 
 
+const Lesson =()=>import("@/views/Lesson") //cq_课程视频
 
 export default[
-    {
-        name:'home',
-        path:'/',
-        component: Home,
-        meta:{
-            isHideFooter: false,
-            isActive:0
-        }
-    },
+    // {
+    //     name:'home',
+    //     path:'/',
+    //     component: Home,
+    //     meta:{
+    //         isHideFooter: false,
+    //         isActive:0
+    //     }
+    // },
     {
         name:'bankingring',
         path:'/bankingring',
@@ -52,5 +53,15 @@ export default[
             isHideFooter: true,
            
         }
+        
+    },
+    {
+        //cq_课程视频
+        name:'lesson',
+        path:'/lesson',
+        component:Lesson,
+        meta: { 
+            isHideFooter: true
+         }
     }
 ]
