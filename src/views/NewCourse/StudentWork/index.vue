@@ -11,7 +11,7 @@
     <div class="discWrap">
       {{item.introduce?item.introduce:"新手烘焙专题：从入门到精通"}}
     </div>
-    <div class="admireWrap">
+    <div class="admireWrap" @click="tellUS">
       <img src="https://image.hongbeibang.com/Fj4ZDoVywR5b3huYgsOzfnPalXRt">
       <span>{{item.likeNum}}</span>
     </div>
@@ -23,24 +23,33 @@
 import {
   mapState
 } from 'vuex'
+
+import {
+  Dialog
+} from 'vant'
+
 export default {
   name: 'StudentWork',
-  data() {
-    return {
-
-    }
-  },
   computed: {
     ...mapState({
       workList: state => state.newcourse.workList,
+      client: state => state.newcourse.client,
     })
 
+  },
+  methods: {
+    tellUS() {
+      Dialog.alert({
+        title: '提示',
+        message: '用户未登陆！',
+      })
+    },
   },
   mounted() {
 
   },
   components: {
-
+    [Dialog.Component.name]: Dialog.Component,
   }
 }
 </script>

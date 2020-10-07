@@ -10,6 +10,9 @@ const state = {
   newCourse: {},
   courseItem: [],
   workList: [],
+  client:{
+    name:"远航"
+  }
   //  image:[],
 }
 
@@ -26,7 +29,12 @@ const mutations = {
     state.courseItem = data
   },
   GET_NEW_STUDENT_WORK_NYT(state, data) {
-    state.workList = data
+    state.workList = data.content.data
+    // state.clientNam = data.client.name
+  },
+  GET_NEW_CLIENT_NAME_NYT(state, data) {
+    // state.workList = data.content.data
+    state.client = data
   }
 
 }
@@ -44,9 +52,13 @@ const actions = {
   },
   async getReqNewStudentWork_nyt({commit}) {
     const {data} = await reqNewStudentWork_nyt()
-    commit('GET_NEW_STUDENT_WORK_NYT', data.content.data)
+    commit('GET_NEW_STUDENT_WORK_NYT', data)
     // console.log(222,data.content)
-
+  },
+  async getReqClient_Name_nyt({commit}) {
+    const {data} = await reqNewStudentWork_nyt()
+    commit('GET_NEW_CLIENT_NAME_NYT', data.client)
+    // console.log(222,data.content)
   }
 
 }

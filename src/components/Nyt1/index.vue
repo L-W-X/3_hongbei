@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="container">
   <div class="wrap">
     <ul class="left">
       <li v-for="item in huikan" :key="item.id"><i></i><span>{{item.title}}</span></li>
@@ -17,6 +17,7 @@ export default {
   name: 'Nyt1',
   data() {
     return {
+
       huikan: [{
           id: 1,
           title: '永久回看'
@@ -53,9 +54,7 @@ export default {
     }
   },
   methods: {
-    // tankuang(){
 
-    // }
   },
   components: {
 
@@ -69,6 +68,7 @@ export default {
   background: #fff;
   display: flex;
   align-items: center;
+  margin: 10px 0;
 
   .left {
     display: flex;
