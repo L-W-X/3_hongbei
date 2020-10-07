@@ -11,7 +11,6 @@ const state = {
   courseItem: [],
   workList: [],
   client:{
-    name:"远航"
   }
   //  image:[],
 }
