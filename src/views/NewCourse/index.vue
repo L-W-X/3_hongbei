@@ -28,6 +28,7 @@
   <div v-show="active===0" class="CourseWrap">
     <div style="background-color: #fff;
     padding-top: 15px;"></div>
+    <a href="#"></a>
     <div class="specWrap">
       <div class="title" v-if="newCourse.introduces" v-html="newCourse.introduces[0].title">
         {{newCourse.introduces[0].title}}

@@ -44,7 +44,7 @@ const actions = {
   },
   async getReqNewStudentWork_nyt({commit}) {
     const {data} = await reqNewStudentWork_nyt()
-    commit('GET_NEW_STUDENT_WORK_NYT', data.content)
+    commit('GET_NEW_STUDENT_WORK_NYT', data.content.data)
     // console.log(222,data.content)
 
   }

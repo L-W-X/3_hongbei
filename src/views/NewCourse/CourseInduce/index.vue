@@ -1,6 +1,6 @@
 <template>
 <div>
-  CourseInduce
+
 </div>
 </template>
 
