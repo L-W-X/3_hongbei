@@ -9,8 +9,8 @@ export default {
   name:'Home',
   //测试使用
  async  mounted() {
-    const res =await this.$API.reqCategoryList()
-    console.log(res)
+    // const res =await this.$API.reqCategoryList()
+    // console.log(res)
     
   },
 }
