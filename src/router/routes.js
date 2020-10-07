@@ -2,6 +2,8 @@ const Home =()=>import("@/views/Home")
 const BakingRing =()=>import("@/views/BakingRing")
 const Personal =()=>import("@/views/Personal")
 const QA =()=>import("@/views/QA")
+const university =()=>import("@/views/VideoSchool")
+
 
 const BakingFollow =()=>import("@/views/BakingRing/BakingFollow")   //fc-烘焙圈-关注
 const BakingNew =()=>import("@/views/BakingRing/BakingNew")         //fc-烘焙圈-最新
@@ -98,4 +100,14 @@ export default[
             isActive:3
         }
     },
+    {
+        
+        name:'university',
+        path:'/university',
+        component: university,
+        meta:{
+            isHideFooter: true,
+           
+        }
+    }
 ]

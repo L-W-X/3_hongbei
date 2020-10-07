@@ -4,6 +4,7 @@ import backingTalent from './backingTalent'
 import qaNew from './qaNew'
 import qaHot from './qaHot'
 import qaEssence from './qaEssence'
+import university from './university'
 
 
 export default{
@@ -12,5 +13,6 @@ export default{
     backingTalent,
     qaNew,
     qaHot,
-    qaEssence
+    qaEssence,
+    university
 }
