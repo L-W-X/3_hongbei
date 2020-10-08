@@ -28,42 +28,46 @@ export default[
         name:'bankingring',
         path:'/bankingring',
         component: BakingRing,
-        meta:{
-            isHideFooter: false,
-            isActive:1
-        },
+       
         children:[     //fc-烘焙圈子路由
             {
                 name:'follow',
                 path:'follow',
                 component:Personal,
+                meta:{
+                    isHideFooter: false,
+                    isActive:1
+                }
             },
             {
                 name:'new',
-                path:'/',
+                path:'new',
                 component:BakingNew,
                 meta:{
                     isHideFooter: false,
+                    isActive:1
                 }
             },
+            
             {
                 name:'talent',
                 path:'talent',
                 component:BakingTalent,
                 meta:{
                     isHideFooter: false,
+                    isActive:1
                 }
-            }
+            },
+            {
+                path:'',redirect: {name:'new'},
+            },
         ]
     },
     {
         name:'qa',
         path:'/qa',
         component: QA,
-        meta:{
-            isHideFooter: false,
-            isActive:2
-        },
+        
         children:[     //fc-问答子路由
             {
                 name:'essence',
@@ -71,14 +75,16 @@ export default[
                 component:Essence,
                 meta:{
                     isHideFooter: false,
+                    isActive:2
                 }
             },
             {
                 name:'New',
-                path:'/',
+                path:'New',
                 component:New,
                 meta:{
                     isHideFooter: false,
+                    isActive:2
                 }
             },
             {
@@ -87,8 +93,12 @@ export default[
                 component:Hot,
                 meta:{
                     isHideFooter: false,
+                    isActive:2
                 }
-            }
+            },
+            {
+                path:'',redirect: {name:'New'},
+            },
         ]
     },
     {

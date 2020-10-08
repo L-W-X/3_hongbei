@@ -119,9 +119,10 @@ export default {
       }
     }
     .labelList_fc{
+      box-sizing: border-box;
       background: #fff;
       width: 100%;
-      height: 55px;
+      // height: 55px;
       overflow-x: auto;
       white-space: nowrap;
       -webkit-overflow-scrolling: touch;
