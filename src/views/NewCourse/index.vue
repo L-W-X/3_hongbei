@@ -26,9 +26,6 @@
     <StudentWork v-show="active===2"></StudentWork>
   </div>
 
-  <van-popup v-model="show" overlay closeable position="right" :style="{ height: '30%' }">
-    fdgss二过过过过过过过过过过过过过过过
-    dfgs</van-popup>
 </div>
 </template>
 
@@ -58,8 +55,6 @@ export default {
   computed: {
     ...mapState({
       newCourse: state => state.newcourse.newCourse,
-      // image: state => state.newcourse.image,
-
     })
   },
   // watch: {

@@ -1,8 +1,8 @@
 <template>
 <div class="workWrap">
-  <div class="workItem" v-for="item in workList" :key="item.clientId">
+  <div class="workItem" v-for="item in workList" :key="item.clientId" @click="showDetail(item.clientId,item.educationCourseId)">
     <div class="PicWrap" v-if="item.image">
-      <img :src="item.image[0]" alt="">
+      <img :src="item.image[0]">
     </div>
     <div class="nameWrap">
       <img :src="item.clientImage">
@@ -15,21 +15,43 @@
       <img src="https://image.hongbeibang.com/Fj4ZDoVywR5b3huYgsOzfnPalXRt">
       <span>{{item.likeNum}}</span>
     </div>
+    <van-popup v-model="flag" position="top" :style="{ height: '100%' }">
+      <div class="detailWrap">
+        <div class="namePicWrap">
+          <div class="pic">
+            <img :src="item.clientImage">
+          </div>
+          <div class="name">
+            <p>{{item.clientName}}</p>
+            <p>{{item.createTime}}</p>
+          </div>
+        </div>
+
+      </div>
+    </van-popup>
+
   </div>
 </div>
 </template>
 
 <script>
 import {
-  mapState
+  mapState,
+  mapActions
 } from 'vuex'
 
 import {
-  Dialog
+  Dialog,
+  Popup
 } from 'vant'
 
 export default {
   name: 'StudentWork',
+  data() {
+    return {
+      flag: false
+    }
+  },
   computed: {
     ...mapState({
       workList: state => state.newcourse.workList,
@@ -38,12 +60,17 @@ export default {
 
   },
   methods: {
+    ...mapActions(["getReqStudent_Detail_nyt"]),
     tellUS() {
       Dialog.alert({
         title: '提示',
         message: '用户未登陆！',
       })
     },
+    showDetail(clientId, educationCourseId) {
+      this.flag = true
+      this.getReqStudent_Detail_nyt(clientId, educationCourseId)
+    }
   },
   mounted() {
 
@@ -154,6 +181,12 @@ export default {
         vertical-align: middle;
         color: #686868;
       }
+    }
+
+    // 弹出层样式
+    .detailWrap {
+      font-size: 20px;
+      color: rgb(7, 0, 0);
     }
   }
 

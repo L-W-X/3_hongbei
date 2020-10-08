@@ -1,7 +1,9 @@
 import {
   reqNewCourse_nyt,
   reqNewCourseItem_nyt,
-  reqNewStudentWork_nyt
+  reqNewStudentWork_nyt,
+  reqNewStudentDetail_nyt,
+  reqNewStudentDetailTeacher_nyt
 } from '@/axios/index.js'
 
 
@@ -10,9 +12,11 @@ const state = {
   newCourse: {},
   courseItem: [],
   workList: [],
-  client:{
-  }
-  //  image:[],
+  client:{},
+  // 获取学员详细信息
+  dish:{},
+  // 获取老师评论
+  teachComment:[]
 }
 
 const mutations = {
@@ -34,6 +38,10 @@ const mutations = {
   GET_NEW_CLIENT_NAME_NYT(state, data) {
     // state.workList = data.content.data
     state.client = data
+  },
+  GET_NEW_STUDENT_DETAIL_NYT(state, data) {
+    // state.workList = data.content.data
+    state.dish = data
   }
 
 }
@@ -58,6 +66,12 @@ const actions = {
     const {data} = await reqNewStudentWork_nyt()
     commit('GET_NEW_CLIENT_NAME_NYT', data.client)
     // console.log(222,data.content)
+  },
+  async getReqStudent_Detail_nyt({commit},{contentId,educationCourseId}) {
+    const {data} = await reqNewStudentDetail_nyt(contentId,educationCourseId)
+    // console.log(222,data)
+    commit('GET_NEW_STUDENT_DETAIL_NYT', data)
+    console.log(222,data)
   }
 
 }

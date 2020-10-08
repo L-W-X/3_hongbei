@@ -36,3 +36,17 @@ export const reqNewCourseItem_nyt=()=>ajax('education/getSeriesCourse?educationC
 
 // 获取学员作业
 export const reqNewStudentWork_nyt=()=>ajax('dish/getOutstandingCourseContent?educationCourseId=10533')
+// 获取学员个人评价信息
+// export const reqNewStudentWork_nyt=()=>ajax('dish/getOutstandingCourseContent?educationCourseId=10533')
+export const reqNewStudentDetail_nyt=(contentId,educationCourseId)=>ajax.get('/dish/getSingleCourseContent',{
+    params:{
+        contentId: contentId,
+        educationCourseId: educationCourseId
+    }
+})
+export const reqNewStudentDetailTeacher_nyt=(contentId,pageSize=10)=>ajax.get('/comment/getFloorByTeacher',{
+    params:{
+        contentId: contentId,
+        pageSize: pageSize
+    }
+})
