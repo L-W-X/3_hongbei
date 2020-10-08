@@ -5,10 +5,16 @@ import qaNew from './qaNew'
 import qaHot from './qaHot'
 import qaEssence from './qaEssence'
 import university from './university'
+import classification from './classification'
+import skill from './skill'
+
 
 
 export default{
     home,
+    university,
+    classification,
+    skill,
     backingNew,
     backingTalent,
     qaNew,
