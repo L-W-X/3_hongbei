@@ -3,6 +3,7 @@ const BakingRing =()=>import("@/views/BakingRing")
 const Personal =()=>import("@/views/Personal")
 const QA =()=>import("@/views/QA")
 const university =()=>import("@/views/VideoSchool")
+<<<<<<< HEAD
 
 
 const BakingFollow =()=>import("@/views/BakingRing/BakingFollow")   //fc-烘焙圈-关注
@@ -13,6 +14,12 @@ const Essence =()=>import("@/views/QA/Essence")             //fc-问答-精华�
 const New =()=>import("@/views/QA/New")                     //fc-问答-最新问题
 const Hot =()=>import("@/views/QA/Hot")                     //fc-问答-最热问题
 
+=======
+const newcourse = ()=>import("@/views/NewCourse")
+// const CourseInduce = ()=>import("@/views/NewCourse/CourseInduce")
+// const CourseList = ()=>import("@/views/NewCourse/CourseList")
+// const StudentWork = ()=>import("@/views/NewCourse/StudentWork")
+>>>>>>> nyt_dev
 
 export default[
     {
@@ -109,5 +116,39 @@ export default[
             isHideFooter: true,
            
         }
+    },
+    {
+        
+        name:'newcourse',
+        path:'/newcourse',
+        component: newcourse,
+        meta:{
+            isHideFooter: true,
+           
+        }
+        // children:[
+        //     {path:"/newcourse/CourseInduce",
+        //      component:CourseInduce,
+        //      meta:{
+        //         isHideFooter: true,
+               
+        //     }
+        //     },
+        //     {path:"/newcourse/CourseList",
+        //      component:CourseList,
+        //      meta:{
+        //         isHideFooter: true,
+               
+        //     }
+        //     },
+        //     {path:"/newcourse/StudentWork",
+        //      component:StudentWork,
+        //      meta:{
+        //         isHideFooter: true,
+               
+        //     }
+        //     }
+        // ]
+        
     }
 ]

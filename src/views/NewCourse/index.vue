@@ -25,6 +25,10 @@
     <CourseList v-show="active===1"></CourseList>
     <StudentWork v-show="active===2"></StudentWork>
   </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> nyt_dev
 </div>
 </template>
 
@@ -37,6 +41,15 @@ import nyt1 from "@/components/Nyt1"
 import CourseInduce from "./CourseInduce"
 import CourseList from "./CourseList"
 import StudentWork from "./StudentWork"
+<<<<<<< HEAD
+=======
+import Vue from 'vue';
+import {
+  Popup
+} from 'vant';
+
+Vue.use(Popup);
+>>>>>>> nyt_dev
 export default {
   name: 'NewCourse',
   data() {
@@ -48,8 +61,11 @@ export default {
   computed: {
     ...mapState({
       newCourse: state => state.newcourse.newCourse,
+<<<<<<< HEAD
       // image: state => state.newcourse.image,
 
+=======
+>>>>>>> nyt_dev
     })
   },
   // watch: {
