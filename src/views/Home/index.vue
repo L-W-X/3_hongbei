@@ -34,6 +34,7 @@ import {
 } from 'vuex'
 import LessonScroll from '@/components/LessonScroll'
 export default {
+<<<<<<< HEAD
   name: "Home",
   computed: {
     ...mapState({
@@ -62,6 +63,38 @@ export default {
   components: {
     LessonScroll
   }
+=======
+	name: "Home",
+	computed:{
+		...mapState({
+			navlist:state=>state.home.navlist,
+			recommdlist:state=>state.home.recommdlist,
+			homelist:state=>state.home.homelist,
+
+		})
+	},
+	mounted(){
+		this.getNavList_lwx()
+		this.getRecommend_lwx()
+		this.getHomeList_lwx()
+	},
+	methods:{
+		...mapActions(['getNavList_lwx','getRecommend_lwx','getHomeList_lwx']),
+		openinfo(src){
+			if(src.includes('university')){
+				this.$router.push('/university')
+			}else if(src.includes('classify')){
+               this.$router.push("/classIfication")
+			}if(src.includes('baike')){
+				this.$router.push("/skill")
+			}
+
+		}
+	},
+	components:{
+		LessonScroll
+	}
+>>>>>>> f0be690a553fa6b09c50c2f0aeb7a2b3a8459068
 };
 </script>
 
