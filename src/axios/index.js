@@ -41,7 +41,7 @@ export const reqUniversityItem_lwx=(id)=>ajax.get('/index/getIndexItem',{
         categoryId: id
     }
 })
-<<<<<<< HEAD
+
 /*******************************新手教程nyt*******************************/
 export const reqNewCourse_nyt=()=>ajax('education/getCourse?educationCourseId=10533')
 // 获取课程目录
@@ -63,7 +63,7 @@ export const reqNewStudentDetailTeacher_nyt=(contentId,pageSize=10)=>ajax.get('/
         pageSize: pageSize
     }
 })
-=======
+
 
 /*******************************************获取分类信息界面**************************************** */
 //获取分类信息界面
@@ -76,4 +76,4 @@ export const reqSkill_wkx=()=>ajax.get('/education/getNewbieGuide',{
         type: 5
     }
 })
->>>>>>> f0be690a553fa6b09c50c2f0aeb7a2b3a8459068
+
