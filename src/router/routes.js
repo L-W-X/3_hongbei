@@ -3,8 +3,8 @@ const BakingRing =()=>import("@/views/BakingRing")
 const Personal =()=>import("@/views/Personal")
 const QA =()=>import("@/views/QA")
 const university =()=>import("@/views/VideoSchool")
-
-
+const classIfication =()=>import("@/views/ClassIfIcation")
+const skill =()=>import("@/views/skill")
 
 export default[
     {
@@ -51,6 +51,23 @@ export default[
         meta:{
             isHideFooter: true,
            
+        }
+    },
+    //.....................wkx................................
+    {
+        name:'classIfication',
+        path:'/classIfication',
+        component:classIfication,
+        meta:{
+            isHideFooter: true,
+        }
+    },
+    {
+        name:'skill',
+        path:'/skill',
+        component:skill,
+        meta:{
+            isHideFooter: true,
         }
     }
 ]

@@ -29,3 +29,15 @@ export const reqUniversityItem_lwx=(id)=>ajax.get('/index/getIndexItem',{
         categoryId: id
     }
 })
+
+/*******************************************获取分类信息界面**************************************** */
+//获取分类信息界面
+export const reqClassIfication_wkx=()=>ajax.get('/classify/get')
+//right
+export const reqClass_wkx=()=>ajax.get('/classify/getRecommend')
+//
+export const reqSkill_wkx=()=>ajax.get('/education/getNewbieGuide',{
+    params:{
+        type: 5
+    }
+})
