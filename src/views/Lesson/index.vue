@@ -79,7 +79,7 @@
     <!-- 烘培帮学堂 -->
     <Introduce />
     <!-- 购买课程 -->
-    <BuyCourse :preDiscountPrice="lessonInfo.preDiscountPrice" />
+    <BuyCourse :preDiscountPrice="lessonInfo.preDiscountPrice" v-if="this.$route.query.isHideBottom !== 1" />
   </div>
 </template>
 
@@ -92,7 +92,6 @@ export default {
   name: 'Lesson',
   data () {
     return {
-      contentId:10559,
       date:Date.now(),
       pageIndex:0,
       pageSize:4,
@@ -187,14 +186,16 @@ export default {
     //   this.$store.dispatch('getLessonInfo',{contentId,date})
     // },
     async getLessonInfo(){
-      const { contentId , date } = this
+      const { date } = this
+      const { contentId } = this.$route.query
       const {data} = await this.$API.reqLessonModule(contentId, date)
       this.lessonInfo = data
       this.playerOptions.sources[0].src = data.playURL
       this.playerOptions.poster = data.image
     },
     getHomeworkList(){
-      const { contentId , date , pageIndex , pageSize } = this
+      const { contentId } = this.$route.query
+      const { date , pageIndex , pageSize } = this
       this.$store.dispatch('getHomeworkList',{contentId,date,pageIndex,pageSize})
     }
   }
