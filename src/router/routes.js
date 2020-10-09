@@ -3,10 +3,10 @@ const BakingRing =()=>import("@/views/BakingRing")
 const Personal =()=>import("@/views/Personal")
 const QA =()=>import("@/views/QA")
 const university =()=>import("@/views/VideoSchool")
+const seemore =()=>import("@/views/SeeMore")
+const Lesson =()=>import("@/views/Lesson") //cq_课程视频
 const classIfication =()=>import("@/views/ClassIfIcation")
 const skill =()=>import("@/views/skill")
-
-
 const BakingFollow =()=>import("@/views/BakingRing/BakingFollow")   //fc-烘焙圈-关注
 const BakingNew =()=>import("@/views/BakingRing/BakingNew")         //fc-烘焙圈-最新
 const BakingTalent =()=>import("@/views/BakingRing/BakingTalent")   //fc-烘焙圈-达人
@@ -16,6 +16,9 @@ const BakingDrafts =()=>import("@/views/BakingRing/BakingDrafts")   //fc-烘焙�
 const Essence =()=>import("@/views/QA/Essence")             //fc-问答-精华问题
 const New =()=>import("@/views/QA/New")                     //fc-问答-最新问题
 const Hot =()=>import("@/views/QA/Hot")                     //fc-问答-最热问题
+
+
+const newcourse = ()=>import("@/views/NewCourse")
 
 
 export default[
@@ -132,21 +135,52 @@ export default[
            
         }
     },
-    //.....................wkx................................
     {
-        name:'classIfication',
-        path:'/classIfication',
-        component:classIfication,
+        name:'seemore',
+        path:'/seemore',
+        component: seemore,
         meta:{
             isHideFooter: true,
-        }
+           
+        }  
     },
+    
     {
-        name:'skill',
-        path:'/skill',
-        component:skill,
+        //cq_课程视频
+        name:'lesson',
+        path:'/lesson',
+        component:Lesson,
+        meta: { 
+            isHideFooter: true
+         }
+    },
+        //.....................wkx................................
+        {
+            name:'classIfication',
+            path:'/classIfication',
+            component:classIfication,
+            meta:{
+                isHideFooter: true,
+            }
+        },
+        {
+            name:'skill',
+            path:'/skill',
+            component:skill,
+            meta:{
+                isHideFooter: true,
+            }
+ 
+        },
+
+    {
+        
+        name:'newcourse',
+        path:'/newcourse',
+        component: newcourse,
         meta:{
             isHideFooter: true,
-        }
-    }
+        },
+       
+}
 ]
