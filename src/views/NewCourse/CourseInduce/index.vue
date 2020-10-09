@@ -12,6 +12,7 @@
         {{newCourse.introduces[0].introduce}}
       </div>
     </div>
+    <Line1></Line1>
     <div class="container">
       <div class="tit" v-if="newCourse.introduces" v-html="newCourse.introduces[1].title">
         {{newCourse.introduces[1].title}}
@@ -25,6 +26,7 @@
 </template>
 
 <script>
+import Line1 from '@/components/Line'
 import {
   mapState,
 } from 'vuex'
@@ -57,6 +59,9 @@ export default {
       })
     }
   },
+  components: {
+    Line1
+  }
 
 }
 </script>
@@ -69,6 +74,7 @@ export default {
   .specWrap {
     padding-right: 17.5px;
     list-style-type: normal;
+    padding-bottom: 20px;
 
     .title {
       font-weight: bold;
@@ -93,6 +99,8 @@ export default {
   }
 
   .container {
+    padding-top: 20px;
+
     .tit {
       font-weight: bold;
       font-size: 17px;

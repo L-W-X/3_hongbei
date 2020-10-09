@@ -60,6 +60,7 @@
 import {
   Popup
 } from 'vant';
+Vue.use(Popup);
 export default {
   name: 'Nyt1',
   data() {

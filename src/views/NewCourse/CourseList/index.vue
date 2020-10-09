@@ -1,6 +1,6 @@
 <template>
 <div class="CourseListWrap">
-  <div class="CourseItem" v-for="item in courseItem" :key="item.educationCourseId" @click="openVideo(item.contentId)">
+  <div class="CourseItem" v-for="item in courseItem" :key="item.educationCourseId" @click="openVideo(item.educationCourseId)">
 
     <img :src="item.image">
 
