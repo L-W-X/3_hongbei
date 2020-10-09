@@ -60,6 +60,10 @@ export default {
 		openinfo(src){
 			if(src.includes('university')){
 				this.$router.push('/university')
+			}else if(src.includes('classify')){
+               this.$router.push("/classIfication")
+			}if(src.includes('baike')){
+				this.$router.push("/skill")
 			}
 
 		}

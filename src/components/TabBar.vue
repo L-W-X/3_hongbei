@@ -48,8 +48,6 @@
         bottom: 0;
         width: 100%;
         background-color: #fff;
-       
-
         ul {
             display: flex;
             height: 49px;

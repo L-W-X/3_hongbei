@@ -3,6 +3,19 @@ import ajax from './ajax'
 
 //例子
 //  export const reqCategoryList = () => ajax('/education/getIndexByWeb')
+// export const reqCategoryList = () => ajax('/education/getIndexByWeb')
+
+
+export const reqCategory_fc=()=> ajax('/feed/getCategory')
+export const reqByLimit_fc=()=> ajax('community/getByLimit?&pageSize=99&all=true&isShow=4')
+export const reqNew_fc=()=> ajax('v2/feed/getNew?&pageSize=10&all=true')
+export const reqMasterNew_fc=()=> ajax('v2/feed/getMasterNew?&pageSize=10&all=true')
+export const QaNew_fc=()=> ajax('question/getNew?&pageSize=10&all=true')
+export const QaHot_fc=()=> ajax('question/getHot?pageSize=10&all=true')
+export const QaEssence_fc=()=> ajax('question/getEssence?&pageSize=10&all=true')
+
+
+//  export const reqCategoryList = () => ajax('/education/getIndexByWeb')
 
 
 /*******************************首页请求*******************************/
@@ -53,4 +66,16 @@ export const reqHomeworkList =(educationCourseId,date,pageIndex,pageSize) => aja
     educationCourseId,
     timestamp:date
   }
+})
+
+/*******************************************获取分类信息界面**************************************** */
+//获取分类信息界面
+export const reqClassIfication_wkx=()=>ajax.get('/classify/get')
+//right
+export const reqClass_wkx=()=>ajax.get('/classify/getRecommend')
+//
+export const reqSkill_wkx=()=>ajax.get('/education/getNewbieGuide',{
+    params:{
+        type: 5
+    }
 })
