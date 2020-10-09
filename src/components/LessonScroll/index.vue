@@ -32,6 +32,7 @@ export default {
 	},
 	methods:{
         seemore(id){
+			console.log(id)
            this.$router.push({
 			   path:'/seemore',
 			   query:{
