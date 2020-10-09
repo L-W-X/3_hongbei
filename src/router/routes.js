@@ -4,8 +4,12 @@ const Personal =()=>import("@/views/Personal")
 const QA =()=>import("@/views/QA")
 const university =()=>import("@/views/VideoSchool")
 const Lesson =()=>import("@/views/Lesson") //cq_课程视频
+// <<<<<<< HEAD
+// <<<<<<< HEAD
+// =======
 const classIfication =()=>import("@/views/ClassIfIcation")
 const skill =()=>import("@/views/skill")
+// >>>>>>> f0be690a553fa6b09c50c2f0aeb7a2b3a8459068
 
 
 const BakingFollow =()=>import("@/views/BakingRing/BakingFollow")   //fc-烘焙圈-关注
@@ -16,6 +20,12 @@ const Essence =()=>import("@/views/QA/Essence")             //fc-问答-精华�
 const New =()=>import("@/views/QA/New")                     //fc-问答-最新问题
 const Hot =()=>import("@/views/QA/Hot")                     //fc-问答-最热问题
 
+// =======
+const newcourse = ()=>import("@/views/NewCourse")
+// const CourseInduce = ()=>import("@/views/NewCourse/CourseInduce")
+// const CourseList = ()=>import("@/views/NewCourse/CourseList")
+// const StudentWork = ()=>import("@/views/NewCourse/StudentWork")
+// >>>>>>> nyt_dev
 
 export default[
     {
@@ -133,21 +143,75 @@ export default[
             isHideFooter: true
          }
     },
-    //.....................wkx................................
+        //.....................wkx................................
+        {
+            name:'classIfication',
+            path:'/classIfication',
+            component:classIfication,
+            meta:{
+                isHideFooter: true,
+            }
+        },
+        {
+            name:'skill',
+            path:'/skill',
+            component:skill,
+            meta:{
+                isHideFooter: true,
+            }
+    // >>>>>>> f0be690a553fa6b09c50c2f0aeb7a2b3a8459068
+        },
+// <<<<<<< HEAD
     {
-        name:'classIfication',
-        path:'/classIfication',
-        component:classIfication,
+        
+        name:'newcourse',
+        path:'/newcourse',
+        component: newcourse,
         meta:{
             isHideFooter: true,
-        }
-    },
-    {
-        name:'skill',
-        path:'/skill',
-        component:skill,
-        meta:{
-            isHideFooter: true,
-        }
-    }
+        },
+        // children:[
+        //     {path:"/newcourse/CourseInduce",
+        //      component:CourseInduce,
+        //      meta:{
+        //         isHideFooter: true,
+               
+        //     }
+        //     },
+        //     {path:"/newcourse/CourseList",
+        //      component:CourseList,
+        //      meta:{
+        //         isHideFooter: true,
+               
+        //     }
+        //     },
+        //     {path:"/newcourse/StudentWork",
+        //      component:StudentWork,
+        //      meta:{
+        //         isHideFooter: true,
+               
+        //     }
+        //     }
+        // ]
+        
+// =======
+//     //.....................wkx................................
+//     {
+//         name:'classIfication',
+//         path:'/classIfication',
+//         component:classIfication,
+//         meta:{
+//             isHideFooter: true,
+//         }
+//     },
+//     {
+//         name:'skill',
+//         path:'/skill',
+//         component:skill,
+//         meta:{
+//             isHideFooter: true,
+//         }
+// // >>>>>>> f0be690a553fa6b09c50c2f0aeb7a2b3a8459068
+//     }
+}
 ]

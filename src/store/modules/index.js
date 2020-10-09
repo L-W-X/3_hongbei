@@ -8,6 +8,17 @@ import university from './university'
 import lesson from './lesson'
 import classification from './classification'
 import skill from './skill'
+import newcourse from './newcourse'
+
+// // <<<<<<< HEAD
+// import newcourse from './newcourse'
+
+// export default{
+//     home,
+// <<<<<<< HEAD
+// =======
+// import classification from './classification'
+// import skill from './skill'
 
 
 
@@ -17,10 +28,15 @@ export default{
     lesson,
     classification,
     skill,
+// >>>>>>> f0be690a553fa6b09c50c2f0aeb7a2b3a8459068
     backingNew,
     backingTalent,
     qaNew,
     qaHot,
     qaEssence,
-    university
+    university,
+// =======
+    // university,
+    newcourse
+// >>>>>>> nyt_dev
 }

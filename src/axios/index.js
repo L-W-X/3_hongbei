@@ -68,6 +68,29 @@ export const reqHomeworkList =(educationCourseId,date,pageIndex,pageSize) => aja
   }
 })
 
+/*******************************新手教程nyt*******************************/
+export const reqNewCourse_nyt=()=>ajax('education/getCourse?educationCourseId=10533')
+// 获取课程目录
+export const reqNewCourseItem_nyt=()=>ajax('education/getSeriesCourse?educationCourseId=10533')
+
+// 获取学员作业
+export const reqNewStudentWork_nyt=()=>ajax('dish/getOutstandingCourseContent?educationCourseId=10533')
+// 获取学员个人评价信息
+// export const reqNewStudentWork_nyt=()=>ajax('dish/getOutstandingCourseContent?educationCourseId=10533')
+export const reqNewStudentDetail_nyt=(contentId,educationCourseId)=>ajax.get('/dish/getSingleCourseContent',{
+    params:{
+        contentId: contentId,
+        educationCourseId: educationCourseId
+    }
+})
+export const reqNewStudentDetailTeacher_nyt=(contentId,pageSize=10)=>ajax.get('/comment/getFloorByTeacher',{
+    params:{
+        contentId: contentId,
+        pageSize: pageSize
+    }
+})
+
+
 /*******************************************获取分类信息界面**************************************** */
 //获取分类信息界面
 export const reqClassIfication_wkx=()=>ajax.get('/classify/get')
@@ -79,3 +102,7 @@ export const reqSkill_wkx=()=>ajax.get('/education/getNewbieGuide',{
         type: 5
     }
 })
+<<<<<<< HEAD
+=======
+
+>>>>>>> acfbb6608cc10bbe3cc540b1255a02412be13801
