@@ -1,7 +1,7 @@
 <template>
 <div class="workWrap">
-  <div class="workItem" v-for="item in workList" :key="item.clientId" @click="showDetail(item.clientId,item.educationCourseId)">
-    <div class="PicWrap" v-if="item.image">
+  <div class="workItem" v-for="item in workList" :key="item.clientId">
+    <div class="PicWrap" v-if="item.image" @click="showDetail(item.clientId,item.educationCourseId)">
       <img :src="item.image[0]">
     </div>
     <div class="nameWrap">
