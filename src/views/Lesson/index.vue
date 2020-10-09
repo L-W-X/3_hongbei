@@ -34,9 +34,9 @@
     <div class="studentsHomework" v-if="homeworkList">
       <div class="title">
         <div class="text">学员作业</div>
-        <div class="more">查看更多</div>
+        <div class="more" @click="seeMore">查看更多</div>
       </div>
-      <div class="showImg">
+      <div class="showImg" @click="seeMore">
         <div class="showItem" v-for="item in homeworkList" :key="item.contentId">
           <img :src="item.image[0]" alt="">
         </div>
@@ -63,7 +63,7 @@
     </div>
   </div>
   <!-- 组长组件 -->
-  <div class="liwenxing"></div>
+  <LessonScroll class="LessonScroll" :arraylist="arraylist" :title="title" :moreLink="moreLink" :clientId="clientId"></LessonScroll>
   <!-- 烘培帮学堂 -->
   <Introduce />
   <!-- 购买课程 -->
@@ -78,6 +78,7 @@ import {
 import cLine from '../../components/Line'
 import Introduce from '../../components/Introduce'
 import BuyCourse from '../../components/BuyCourse'
+import LessonScroll from '../../components/LessonScroll'
 import Nyt1 from '../../components/Nyt1'
 export default {
   name: 'Lesson',
@@ -86,7 +87,11 @@ export default {
       date: Date.now(),
       pageIndex: 0,
       pageSize: 4,
+      TpageSize:10,
       lessonInfo: {},
+      clientId:null,
+      title:"导师的其他课程",
+      moreLink:"/all",
       playerOptions: {
         playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
         autoplay: false, //如果true,浏览器准备好时开始回放。
@@ -119,34 +124,43 @@ export default {
     cLine,
     Introduce,
     BuyCourse,
-    Nyt1
+    Nyt1,
+    LessonScroll
   },
   computed: {
     ...mapState({
       // lessonInfo:state => state.lesson.lessonInfo,
-      homeworkList: state => state.lesson.homeworkList
+      homeworkList: state => state.lesson.homeworkList,
+      arraylist: state => state.lesson.arraylist
     })
   },
   mounted() {
     this.getLessonInfo(),
-      this.getHomeworkList()
+    this.getHomeworkList(),
+    this.getClientOtherCourse()
   },
   methods: {
+    //学员作业查看更多
+    seeMore(){
+      const title = this.lessonInfo.title
+      const contentId = this.$route.query.contentId
+      this.$router.push({ path: 'university/dishrank', 
+      query: { 
+        contentId,
+        title
+        }
+      })
+    },
     // getLessonInfo(){
     //   const { contentId , date } = this
     //   this.$store.dispatch('getLessonInfo',{contentId,date})
     // },
     async getLessonInfo() {
-      const {
-        date
-      } = this
-      const {
-        contentId
-      } = this.$route.query
-      const {
-        data
-      } = await this.$API.reqLessonModule(contentId, date)
+      const {date} = this
+      const {contentId} = this.$route.query
+      const { data } = await this.$API.reqLessonModule(contentId, date)
       this.lessonInfo = data
+      this.clientId = data.clientId
       this.playerOptions.sources[0].src = data.playURL||data.trySeeUrl
       this.playerOptions.poster = data.image
     },
@@ -165,6 +179,18 @@ export default {
         pageIndex,
         pageSize
       })
+    },
+    getClientOtherCourse() {
+      const {
+        contentId
+      } = this.$route.query
+      const {
+        date,
+        TpageSize,
+        pageIndex,
+        clientId
+      } = this
+      this.$store.dispatch('getClientOtherCourse', {pageIndex,pageSize:TpageSize,clientId,educationCourseId:contentId,date})
     }
   }
 }
@@ -400,11 +426,9 @@ export default {
     }
   }
 
-  .liwenxing {
-    width: 100%;
-    height: 334px;
-    margin: 10px 0;
-    background-color: #fff
+  .LessonScroll{
+    background: #fff;
+    margin:10px 0;
   }
 }
 </style>

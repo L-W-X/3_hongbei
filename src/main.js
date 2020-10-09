@@ -8,6 +8,10 @@ import * as API from '@/axios/index.js'
 import VideoPlayer from 'vue-video-player'
 import 'video.js/dist/video-js.css'
 import 'vue-video-player/src/custom-theme.css'
+import VueLazyLoad from "vue-lazyload"
+Vue.use(VueLazyLoad,{
+  loading:'/image/cq_lazy.gif'
+  })
 Vue.use(VideoPlayer)
 
 Vue.config.productionTip = false

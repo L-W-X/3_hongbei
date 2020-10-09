@@ -64,7 +64,21 @@ export const reqLessonModule =(educationCourseId,date) => ajax({
   }
 })
 
-// cq_学员作业
+//cq_课程视频  导师的其他课程
+export const reqClientOtherCourse =(pageIndex,pageSize,clientId,educationCourseId,date) => ajax({
+    url: '/course/getClientOtherCourse',
+    method: 'GET',
+    params: {
+      _t:date,
+      pageIndex,
+      pageSize,
+      clientId,
+      educationCourseId,
+      timestamp:date
+    }
+  })
+
+// cq_学员作业   学霸榜
 export const reqHomeworkList =(educationCourseId,date,pageIndex,pageSize) => ajax({
   url: '/dish/getOutstandingCourseContent',
   method: 'GET',
@@ -76,6 +90,20 @@ export const reqHomeworkList =(educationCourseId,date,pageIndex,pageSize) => aja
     timestamp:date
   }
 })
+
+// cq_学员作业   最新
+export const reqNewList =(educationCourseId,date,pageIndex,pageSize) => ajax({
+    url: '/dish/getCourseContent',
+    method: 'GET',
+    params: {
+      _t:date,
+      pageIndex,
+      pageSize,
+      educationCourseId,
+      timestamp:date
+    }
+  })
+  
 
 /*******************************新手教程nyt*******************************/
 export const reqNewCourse_nyt=()=>ajax('education/getCourse?educationCourseId=10533')
