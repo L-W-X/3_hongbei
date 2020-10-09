@@ -3,6 +3,8 @@ const BakingRing =()=>import("@/views/BakingRing")
 const Personal =()=>import("@/views/Personal")
 const QA =()=>import("@/views/QA")
 const university =()=>import("@/views/VideoSchool")
+const seemore =()=>import("@/views/SeeMore")
+
 
 
 
@@ -52,5 +54,16 @@ export default[
             isHideFooter: true,
            
         }
+    },
+    {
+        name:'seemore',
+        path:'/seemore',
+        component: seemore,
+        meta:{
+            isHideFooter: true,
+           
+        }  
     }
+    
+    
 ]

@@ -2,13 +2,13 @@
 	<div class="srollContainer">
 		<div class="titlebody">
 			<span class="title">{{title}}</span>
-			<span class="link" >{{moreLink==='/all'?'查看全部':""}}</span>
+			<span class="link" @click="seemore(categoryId)">{{moreLink!==''?'查看全部':""}}</span>
 		</div>
 		<div ref="scroll">
 			<ul class="scrollbody" ref='scrollbody'>
-				<li @click="say" v-for="item in arraylist" :key="item.contentId">
+				<li  v-for="item in arraylist" :key="item.contentId">
 					<img
-						:src="item.coverImage||item.image"
+						:src="item.coverImage||item.verticalImages[0]"
 						alt=""
 					/>
 					<span> {{item.buyNum>1000?'1000+':item.buyNum}}在学 </span>
@@ -28,10 +28,17 @@ export default {
 		arraylist: Array,
 		title: String,
 		moreLink: String,
+		categoryId:Number
 	},
 	methods:{
-        say(){
-            console.log(22222)
+        seemore(id){
+           this.$router.push({
+			   path:'/seemore',
+			   query:{
+				   categoryId:id
+			   }
+
+		   })
         }
     },
     watch:{

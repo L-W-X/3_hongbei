@@ -17,6 +17,15 @@ export const reqRecommend_lwx=(type=3,pageSize=10)=>ajax.get('/recommend/getRand
 })
 //获取首页课程列表
 export const reqHomelist_lwx=()=>ajax('/education/getIndexByWeb')
+////获取"查看全部"页面数据
+export const reqSeeMoreItem_lwx=(id,pageIndex=0,pageSize=10)=>ajax.get('/index/getIndexItem',{
+    params:{
+        categoryId: id,
+        pageIndex,
+        pageSize
+        
+    }
+})
 //获取视频学堂页面顶部数据
 export const reqUniversityTop_lwx=(type=11)=>ajax.get('/index/getByType',{
     params:{
@@ -26,6 +35,6 @@ export const reqUniversityTop_lwx=(type=11)=>ajax.get('/index/getByType',{
 //获取视屏学堂tab栏详细分栏数据
 export const reqUniversityItem_lwx=(id)=>ajax.get('/index/getIndexItem',{
     params:{
-        categoryId: id
+        categoryId: id, 
     }
 })

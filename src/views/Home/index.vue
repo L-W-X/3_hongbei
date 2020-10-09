@@ -18,6 +18,7 @@
 		:arraylist="recommdlist.item"
 		:moreLink="recommdlist.moreLink"
 		:title="recommdlist.title"
+		:categoryId='recommdlist.categoryId'
 		></LessonScroll>
 
 	<LessonScroll 
@@ -26,6 +27,7 @@
 	:arraylist="info.item"
 	:moreLink="info.moreLink"
 	:title="info.title"
+	:categoryId='info.categoryId'
 	></LessonScroll>
 			<div class="homebottom">
 				<div>Copyright © hongbeibang.com 粤ICP备14090926号-1</div>
