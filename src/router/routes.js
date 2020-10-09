@@ -3,20 +3,18 @@ const BakingRing =()=>import("@/views/BakingRing")
 const Personal =()=>import("@/views/Personal")
 const QA =()=>import("@/views/QA")
 const university =()=>import("@/views/VideoSchool")
-
-
 const Lesson =()=>import("@/views/Lesson") //cq_课程视频
 
 export default[
-    // {
-    //     name:'home',
-    //     path:'/',
-    //     component: Home,
-    //     meta:{
-    //         isHideFooter: false,
-    //         isActive:0
-    //     }
-    // },
+    {
+        name:'home',
+        path:'/',
+        component: Home,
+        meta:{
+            isHideFooter: false,
+            isActive:0
+        }
+    },
     {
         name:'bankingring',
         path:'/bankingring',
