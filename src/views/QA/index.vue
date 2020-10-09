@@ -2,9 +2,9 @@
 <div>
   <div class="qa_top"> 
     <div class="QATop">
-      <div class="QALeft">提问</div>
+      <div class="QALeft" @click="logo">提问</div>
       <div class="QASearch"><span>搜索问题</span></div>
-      <div class="QABell"><img src="/image/bell.png" alt=""></div>
+      <div class="QABell"><img src="/image/bell.png" alt="" @click="logo"></div>
     </div>
     <div class="navTop">
       <router-link class="link" :to="{name: 'essence'}">精华问答</router-link>
@@ -18,7 +18,14 @@
 
 <script>
 export default {
-  name:'QA'
+  name:'QA',
+  methods: {
+    logo(){
+      this.$router.push({
+        name:"personal"
+      })
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

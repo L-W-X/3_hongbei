@@ -32,7 +32,7 @@ export default {
   methods: {
     backHome(){
       this.$router.push({
-        name:"home"
+        name:"new"
       })
     }
   }
