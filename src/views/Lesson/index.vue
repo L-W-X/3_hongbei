@@ -27,7 +27,7 @@
     </div>
   </div>
   <!-- 公共区域占位 -->
-  <div class="zhanwei"></div>
+  <Nyt1 />
   <!-- 学习专区 -->
   <div class="mainContainer">
     <!-- 学员作业 -->
@@ -47,7 +47,7 @@
     <template v-for="(item,index) in lessonInfo.introduces">
       <div class="Learn">
         <div class="title">{{item.title}}</div>
-        <div class="content" v-html="item.introduce" :ref="'change'+(index+1)"></div>
+        <div class="content" v-html="item.introduce"></div>
       </div>
       <cLine />
     </template>
@@ -59,7 +59,7 @@
         <img :src="lessonInfo.teacherImage" alt="">
         <div class="teacherName">{{lessonInfo.teacherName}}</div>
       </div>
-      <div class='content' v-html="lessonInfo.teacherIntroduce" ref="change4"></div>
+      <div class='content' v-html="lessonInfo.teacherIntroduce"></div>
     </div>
   </div>
   <!-- 组长组件 -->
@@ -78,6 +78,7 @@ import {
 import cLine from '../../components/Line'
 import Introduce from '../../components/Introduce'
 import BuyCourse from '../../components/BuyCourse'
+import Nyt1 from '../../components/Nyt1'
 export default {
   name: 'Lesson',
   data() {
@@ -112,53 +113,13 @@ export default {
     }
   },
   watch: {
-    lessonInfo() {
-      this.$nextTick(() => {
-        // this.$refs.change1.querySelectorAll('p').forEach(item => {
-        //     item.style.margin = 0
-        //     item.style.lineHeight = 25.5 + 'px'
-        //     item.style.color = '#313131'
-        //     item.style.marginBottom = 16 + 'px'
-        //     item.querySelectorAll('span').forEach(element => {
-        //       element.style.fontSize = 16 + 'px';
-        //     });
-        //   }),
-        //   this.$refs.change2.querySelectorAll('p').forEach(item => {
-        //     item.style.margin = 0
-        //     item.style.lineHeight = 25.5 + 'px'
-        //     item.style.color = '#313131'
-        //     item.style.marginBottom = 16 + 'px'
-        //     item.querySelectorAll('span').forEach(element => {
-        //       element.style.fontSize = 16 + 'px';
-        //     });
-        //   }),
-        //   this.$refs.change3.querySelectorAll('p').forEach(item => {
-        //     item.style.margin = 0
-        //     item.style.lineHeight = 25.5 + 'px'
-        //     item.style.color = '#313131'
-        //     item.style.marginBottom = 16 + 'px'
-        //     item.querySelectorAll('span').forEach(element => {
-        //       element.style.fontSize = 16 + 'px';
-        //     });
-        //   }),
-        //   this.$refs.change4.querySelectorAll('p').forEach(item => {
-        //     item.style.margin = 0
-        //     item.style.lineHeight = 25.5 + 'px'
-        //     item.style.color = '#313131'
-        //     item.style.marginBottom = 16 + 'px'
-        //     item.querySelectorAll('span').forEach(element => {
-        //       element.style.fontSize = 16 + 'px';
-        //     });
-        //   })
-
-      })
-    }
 
   },
   components: {
     cLine,
     Introduce,
-    BuyCourse
+    BuyCourse,
+    Nyt1
   },
   computed: {
     ...mapState({
@@ -186,7 +147,7 @@ export default {
         data
       } = await this.$API.reqLessonModule(contentId, date)
       this.lessonInfo = data
-      this.playerOptions.sources[0].src = data.playURL
+      this.playerOptions.sources[0].src = data.playURL||data.trySeeUrl
       this.playerOptions.poster = data.image
     },
     getHomeworkList() {
@@ -282,14 +243,6 @@ export default {
     }
   }
 
-  // 占位区
-  .zhanwei {
-    margin: 10px 0;
-    width: 100%;
-    height: 62.3px;
-    background: #fff
-  }
-
   .mainContainer {
     width: 100%;
     background: #fff;
@@ -346,10 +299,18 @@ export default {
 
       .content {
         // color: yellow;
+        p{
+          margin : 0 !important;
+          line-height:25.5px !important;
+          color : #313131 !important;
+          margin-bottom : 16px !important;
+        }
 
         span {
           // color: red !important;
-
+          line-height:25.5px !important;
+          letter-spacing: 0.2px !important;
+          color : #313131 !important;
           font-size: 16px !important;
         }
 
@@ -393,7 +354,22 @@ export default {
     .teacher {
       width: 100%;
       padding: 20px 17.5px 20px 20px;
+      .content{
+         p{
+          margin : 0 !important;
+          line-height:25.5px !important;
+          color : #313131 !important;
+          margin-bottom : 16px !important;
+        }
 
+        span {
+          // color: red !important;
+          line-height:25.5px !important;
+          letter-spacing: 0.2px !important;
+          color : #313131 !important;
+          font-size: 16px !important;
+        }
+      }
       .title {
         font-weight: bold;
         font-size: 17px;
