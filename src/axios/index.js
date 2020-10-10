@@ -122,22 +122,37 @@ export const reqNewCourse_nyt=()=>ajax('education/getCourse?educationCourseId=10
 export const reqNewCourseItem_nyt=()=>ajax('education/getSeriesCourse?educationCourseId=10533')
 
 // 获取学员作业
-export const reqNewStudentWork_nyt=()=>ajax('dish/getOutstandingCourseContent?educationCourseId=10533')
+// export const reqNewStudentWork_nyt=()=>ajax('dish/getOutstandingCourseContent?educationCourseId=10533')
+export const reqNewStudentWork_nyt=(pageIndex,pageSize=10,educationCourseId=10533)=>ajax.get('dish/getOutstandingCourseContent',{
+    params: {
+        pageIndex,
+        pageSize,
+        educationCourseId
+    }
+})
+
 // 获取学员个人评价信息
 // export const reqNewStudentWork_nyt=()=>ajax('dish/getOutstandingCourseContent?educationCourseId=10533')
-export const reqNewStudentDetail_nyt=(contentId,educationCourseId)=>ajax.get('/dish/getSingleCourseContent',{
+export const reqNewStudentDetail_nyt=(contentId,educationCourseId=10533)=>ajax.get('/dish/getSingleCourseContent',{
     params:{
-        contentId: contentId,
-        educationCourseId: educationCourseId
+        contentId,
+        educationCourseId
     }
 })
 export const reqNewStudentDetailTeacher_nyt=(contentId,pageSize=10)=>ajax.get('/comment/getFloorByTeacher',{
     params:{
-        contentId: contentId,
-        pageSize: pageSize
+        contentId,
+        pageSize
     }
 })
-
+// 获取个人页面
+export const reqNewStudentPersonCenter_nyt=(pageIndex=1,pageSize=10,clientId)=>ajax.get('/client/getDish',{
+    params:{
+        clientId,
+        pageIndex,
+        pageSize
+    }
+})
 
 /*******************************************获取分类信息界面**************************************** */
 //获取分类信息界面

@@ -15,18 +15,18 @@
   </div>
   <nyt1></nyt1>
   <!--tab栏-->
-  <div class="tabWrap" id="station">
-    <div :class="active==0?'active':''" @click="change(0)"> <a href="#station">课程介绍</a></div>
-    <div :class="active==1?'active':''" @click="change(1)"><a href="#station">课程目录</a></div>
-    <div :class="active==2?'active':''" @click="change(2)"><a href="#station">学员作业</a></div>
+  <div id="station" class="tabWrap">
+    <div size="normal" class="div" :class="active==0?'active':''" @click="change(0)"> <a href="#station">课程介绍</a></div>
+    <div size="normal" class="div" :class="active==1?'active':''" @click="change(1)"><a href="#station">课程目录</a></div>
+    <div size="normal" class="div" :class="active==2?'active':''" @click="change(2)"><a href="#station">学员作业</a></div>
   </div>
+
   <div>
     <CourseInduce v-show="active===0"></CourseInduce>
     <CourseList v-show="active===1"></CourseList>
     <StudentWork v-show="active===2"></StudentWork>
   </div>
-  <Line1></Line1>
-  <Introduce></Introduce>
+  <BuyCourse :originPrice="newCourse.originPrice" :preDiscountPrice="newCourse.preDiscountPrice"></BuyCourse>
 </div>
 </template>
 
@@ -34,59 +34,81 @@
 import {
   mapState,
   mapActions
-} from 'vuex'
-import Introduce from '@/components/Introduce'
-import Line1 from '@/components/Line'
-import nyt1 from "@/components/Nyt1"
-import CourseInduce from "./CourseInduce"
-import CourseList from "./CourseList"
-import StudentWork from "./StudentWork"
-import Vue from "vue"
+} from "vuex";
+
+import Line1 from "@/components/Line";
+import BuyCourse from "@/components/BuyCourse";
+import nyt1 from "@/components/Nyt1";
+import CourseInduce from "./CourseInduce";
+import CourseList from "./CourseList";
+import StudentWork from "./StudentWork";
+import Vue from "vue";
 import {
-  Popup
-} from 'vant';
+  Popup,
+  Sticky,
+  Button
+} from "vant";
 
 Vue.use(Popup);
+Vue.use(Sticky);
+Vue.use(Button);
 export default {
-  name: 'NewCourse',
+  name: "NewCourse",
   data() {
     return {
       show: false,
-      active: 0
-    }
+      active: 0,
+    };
   },
   computed: {
     ...mapState({
-      newCourse: state => state.newcourse.newCourse,
-
-    })
+      newCourse: (state) => state.newcourse.newCourse,
+    }),
   },
+
+  // created() {
+  //   //在页面加载时读取sessionStorage里的状态信息
+  //   if (sessionStorage.getItem("store")) {
+  //     this.$store.replaceState(Object.assign({}, this.$store.state, JSON.parse(sessionStorage.getItem("store"))))
+  //   }
+
+  //   //在页面刷新时将vuex里的信息保存到sessionStorage里
+  //   window.addEventListener("beforeunload", () => {
+  //     sessionStorage.setItem("store", JSON.stringify(this.$store.state))
+  //   })
+  // },
 
   mounted() {
-    this.getReqNewCourse_nyt()
-    this.getReqNewCourseItem_nyt()
-    this.getReqNewStudentWork_nyt()
-    this.getReqClient_Name_nyt()
+    this.getReqNewCourse_nyt();
+    this.getReqNewCourseItem_nyt();
+    this.getReqNewStudentWork_nyt();
+    this.getReqClient_Name_nyt();
   },
   methods: {
-    ...mapActions(['getReqNewCourse_nyt', 'getReqNewCourseItem_nyt', 'getReqNewStudentWork_nyt', 'getReqClient_Name_nyt']),
+    ...mapActions([
+      "getReqNewCourse_nyt",
+      "getReqNewCourseItem_nyt",
+      "getReqNewStudentWork_nyt",
+      "getReqClient_Name_nyt",
+    ]),
     change(i) {
-      this.active = i
+      this.active = i;
     },
     showPopup() {
       this.show = true;
-      console.log(111)
-    }
+      console.log(111);
+    },
   },
   components: {
     nyt1,
-    Introduce,
-    Line1,
+    // Introduce,
+    // Line1,
+    BuyCourse,
     CourseInduce,
     CourseList,
-    StudentWork
-  }
-}
+    StudentWork,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -96,11 +118,13 @@ a {
 }
 
 .newCourseWrap {
+  padding-bottom: 50px;
+
   ul {
     list-style: disc;
   }
 
-  background-color: #F5F7F9;
+  background-color: #f5f7f9;
 
   .headerImage {
     width: 375px;
@@ -109,7 +133,6 @@ a {
     img {
       width: 100%;
       height: 100%;
-
     }
   }
 
@@ -147,7 +170,7 @@ a {
         color: #313131;
 
         .peopleNum {
-          color: #E98B71;
+          color: #e98b71;
           font-size: 13px;
           line-height: 26.5px;
         }
@@ -158,20 +181,21 @@ a {
           color: #313131;
         }
       }
-
     }
   }
 
   .tabWrap {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: #fff;
 
-    div {
+    .div {
+      flex: 1;
       margin-top: 12px;
       font-size: 15px;
       line-height: 21px;
       color: #828282;
+      padding: 0 31.5px;
     }
 
     .active {
@@ -181,14 +205,13 @@ a {
       &::after {
         content: "";
         display: block;
-        background-color: #E98B71;
+        background-color: #e98b71;
         width: 20px;
         height: 3px;
         margin-top: 5px;
-        margin-left: 17px
+        margin-left: 17px;
       }
     }
   }
-
 }
 </style>

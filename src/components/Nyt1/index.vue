@@ -57,7 +57,11 @@
 </template>
 
 <script>
+<<<<<<< HEAD
+import Vue from 'vue'
+=======
 import Vue from "vue"
+>>>>>>> 345c5b0ce6aecad1e1b58119d8d5bab25895026e
 import {
   Popup
 } from 'vant';

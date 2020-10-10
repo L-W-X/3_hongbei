@@ -23,7 +23,10 @@ const New =()=>import("@/views/QA/New")                     //fc-问答-最新�
 const Hot =()=>import("@/views/QA/Hot")                     //fc-问答-最热问题
 
 
-const newcourse = ()=>import("@/views/NewCourse")
+const newcourse = ()=>import("@/views/NewCourse")  //nyt-新手教程
+const dish = ()=>import("@/views/NewCourse/dish") //nyt-详情页
+const buy = ()=>import("@/components/buy") //nyt-详情页
+
 
 
 export default[
@@ -159,9 +162,9 @@ export default[
     },
     {
         
-        name:'university',
-        path:'/university',
-        component: university,
+        name:'dish',
+        path:'/dish',
+        component: dish,
         meta:{
             isHideFooter: true,
            
@@ -230,7 +233,7 @@ export default[
             }
  
         },
-
+        //.....................nyt................................
     {
         
         name:'newcourse',
@@ -240,5 +243,25 @@ export default[
             isHideFooter: true,
         },
        
-}
+    },
+    {
+        
+        name:'dish',
+        path:'/dish',
+        component: dish,
+        meta:{
+            isHideFooter: true,
+        },
+       
+    },
+    {
+        
+        name:'buy',
+        path:'/buy',
+        component: buy,
+        meta:{
+            isHideFooter: true,
+        },
+       
+    },
 ]

@@ -1,84 +1,102 @@
 <template>
-<div class="workWrap">
-  <div class="workItem" v-for="item in workList" :key="item.clientId">
-    <div class="PicWrap" v-if="item.image" @click="showDetail(item.clientId,item.educationCourseId)">
-      <img :src="item.image[0]">
-    </div>
-    <div class="nameWrap">
-      <img :src="item.clientImage">
-      <div>{{item.clientName}}</div>
-    </div>
-    <div class="discWrap">
-      {{item.introduce?item.introduce:"新手烘焙专题：从入门到精通"}}
-    </div>
-    <div class="admireWrap" @click="tellUS">
-      <img src="https://image.hongbeibang.com/Fj4ZDoVywR5b3huYgsOzfnPalXRt">
-      <span>{{item.likeNum}}</span>
-    </div>
-    <van-popup v-model="flag" position="top" :style="{ height: '100%' }">
-      <div class="detailWrap">
-        <div class="namePicWrap">
-          <div class="pic">
-            <img :src="item.clientImage">
-          </div>
-          <div class="name">
-            <p>{{item.clientName}}</p>
-            <p>{{item.createTime}}</p>
-          </div>
+<div>
+  <van-list class="workWrap" v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
+    <van-cell class="workItem" v-for="item in workList" :key="item.clientId">
+      <div @click="showDetail(item.contentId)">
+        <div class="PicWrap" v-if="item.image">
+          <img :src="item.image[0]" />
         </div>
-
+        <div class="nameWrap">
+          <img :src="item.clientImage" />
+          <div>{{ item.clientName }}{{ item.educationCourseId }}</div>
+        </div>
+        <div class="discWrap">
+          {{ item.introduce ? item.introduce : "新手烘焙专题：从入门到精通" }}
+        </div>
       </div>
-    </van-popup>
-
-  </div>
+      <div class="admireWrap" @click="tellUS">
+        <img src="https://image.hongbeibang.com/Fj4ZDoVywR5b3huYgsOzfnPalXRt" />
+        <span>{{ item.likeNum }}</span>
+      </div>
+    </van-cell>
+  </van-list>
 </div>
 </template>
 
 <script>
+import Vue from "vue";
+import {
+  List,
+  Cell
+} from "vant";
+Vue.use(List);
+Vue.use(Cell);
 import {
   mapState,
   mapActions
-} from 'vuex'
+} from "vuex";
 
 import {
   Dialog,
   Popup
-} from 'vant'
+} from "vant";
 
 export default {
-  name: 'StudentWork',
+  name: "StudentWork",
   data() {
     return {
-      flag: false
-    }
+      loading: false,
+      finished: false,
+      num: 0,
+      // contentId: ""
+    };
   },
+
   computed: {
     ...mapState({
-      workList: state => state.newcourse.workList,
-      client: state => state.newcourse.client,
-    })
-
+      workList: (state) => state.newcourse.workList,
+      client: (state) => state.newcourse.client,
+    }),
+    set: function (newValue) {},
   },
   methods: {
-    ...mapActions(["getReqStudent_Detail_nyt"]),
+    ...mapActions(["getReqStudent_Detail_nyt", "getReqStudent_Comment_nyt"]),
     tellUS() {
       Dialog.alert({
-        title: '提示',
-        message: '用户未登陆！',
-      })
+        title: "提示",
+        message: "用户未登陆！",
+      });
     },
-    showDetail(clientId, educationCourseId) {
-      this.flag = true
-      this.getReqStudent_Detail_nyt(clientId, educationCourseId)
-    }
-  },
-  mounted() {
-
+    showDetail(contentId) {
+      // this.contentId = contentId
+      // this.getReqStudent_Detail_nyt(contentId);
+      // this.getReqStudent_Comment_nyt(contentId);
+      // router.push({ path: 'register', query: { plan: 'private' }})
+      this.$router.push({
+        path: "dish",
+        query: {
+          contentId,
+        },
+      });
+    },
+    async getMoreWork() {
+      const res = await this.$API.reqNewStudentWork_nyt(this.num);
+      this.$store.state.newcourse.workList = [
+        ...this.workList,
+        ...res.data.content.data,
+      ];
+      this.loading = false;
+    },
+    onLoad() {
+      this.loading = true;
+      this.num += 10;
+      this.getMoreWork();
+    },
   },
   components: {
     [Dialog.Component.name]: Dialog.Component,
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -96,10 +114,11 @@ export default {
     margin: 5px;
     box-sizing: border-box;
     font-size: 0;
-    border: 1px solid #F5F7F9;
+    border: 1px solid #f5f7f9;
     display: inline-flex;
     flex-direction: column;
     border-radius: 4px;
+    padding: 0;
 
     .PicWrap {
       background: none;
@@ -189,6 +208,5 @@ export default {
       color: rgb(7, 0, 0);
     }
   }
-
 }
 </style>
