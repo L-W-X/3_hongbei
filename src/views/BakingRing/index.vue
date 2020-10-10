@@ -42,7 +42,7 @@ export default {
     top: 0;
     align-items: center;
     background: #fff;
-       
+    z-index: 9;
     .navTop{
       flex: 1;
       text-align: center;

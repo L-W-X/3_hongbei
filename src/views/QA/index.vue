@@ -17,9 +17,21 @@
 </template>
 
 <script>
+import {mapState,mapActions} from "vuex";
+
 export default {
   name:'QA',
+  components: {
+    
+  },
+  computed: {
+
+  },
+  mounted(){
+ 
+  },
   methods: {
+
     logo(){
       this.$router.push({
         name:"personal"
@@ -34,6 +46,7 @@ export default {
     height: 90px;
     position: fixed;
     background: #fff;
+    z-index: 9;
     top: 0;
     .QATop{
       width: 100%;

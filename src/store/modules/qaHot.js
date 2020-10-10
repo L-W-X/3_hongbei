@@ -1,4 +1,4 @@
-import {QaHot_fc} from "@/axios/index.js"
+// import {QaHot_fc} from "@/axios/index.js"
 
 const state={
   qaHotContent:[]

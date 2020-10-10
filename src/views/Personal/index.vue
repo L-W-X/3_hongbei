@@ -31,9 +31,7 @@ export default {
   name: 'Personal',
   methods: {
     backHome(){
-      this.$router.push({
-        name:"new"
-      })
+      this.$router.go(-1)
     }
   }
 }
