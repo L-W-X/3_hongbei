@@ -7,11 +7,15 @@ const seemore =()=>import("@/views/SeeMore")
 const search =()=>import("@/views/Search")
 const searchlive =()=>import("@/views/SearchLive")
 const Lesson =()=>import("@/views/Lesson") //cq_课程视频
+const HomeWork =()=>import("@/views/HomeWork") //cq_学员作业
 const classIfication =()=>import("@/views/ClassIfIcation")
 const skill =()=>import("@/views/skill")
 const BakingFollow =()=>import("@/views/BakingRing/BakingFollow")   //fc-烘焙圈-关注
 const BakingNew =()=>import("@/views/BakingRing/BakingNew")         //fc-烘焙圈-最新
 const BakingTalent =()=>import("@/views/BakingRing/BakingTalent")   //fc-烘焙圈-达人
+const BakingDrafts =()=>import("@/views/BakingRing/BakingDrafts")   //fc-烘焙圈-草稿箱
+
+
 const Essence =()=>import("@/views/QA/Essence")             //fc-问答-精华问题
 const New =()=>import("@/views/QA/New")                     //fc-问答-最新问题
 const Hot =()=>import("@/views/QA/Hot")                     //fc-问答-最热问题
@@ -28,6 +32,14 @@ export default[
         meta:{
             isHideFooter: false,
             isActive:0
+        }
+    },
+    {
+        name:"backingdrafts",    //fc-烘焙圈内的草稿箱
+        path:"/backingdrafts",
+        component:BakingDrafts,
+        meta:{
+            isHideFooter:true
         }
     },
     {
@@ -158,6 +170,15 @@ export default[
         name:'lesson',
         path:'/lesson',
         component:Lesson,
+        meta: { 
+            isHideFooter: true
+         }
+    },
+    {
+        //cq_学员作业
+        name:'homeWork',
+        path:'/university/dishrank', //
+        component:HomeWork,
         meta: { 
             isHideFooter: true
          }

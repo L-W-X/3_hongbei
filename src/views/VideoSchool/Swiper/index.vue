@@ -1,7 +1,7 @@
 <template>
 <div class="swiper-container" ref="swiper">
     <div class="swiper-wrapper">
-        <div class="swiper-slide" v-for="(info,index) in imagelist" :key="index">
+        <div class="swiper-slide" v-for="(info,index) in imagelist" :key="index" @click='look(info)'>
             <img :src="info.image" alt="">
         </div>
        
@@ -32,6 +32,12 @@ export default {
           })
          })
           
+      }
+  },
+  methods: {
+      look(item){
+         
+          this.$router.push(item.link)
       }
   },
   mounted() {

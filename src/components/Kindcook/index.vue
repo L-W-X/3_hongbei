@@ -1,6 +1,6 @@
 <template>
 	<div class="kindcook">
-		<div v-for="item in arraylist" :key="item.contentId" class="item" >
+		<div v-for="item in arraylist" :key="item.contentId" class="item"  @click="look(item)">
 			<img :src="item.coverImage||item.verticalImages[0]" alt="" />
 			<span> {{ item.buyNum > 1000 ? "1000+" : item.buyNum }}人参加 </span>
 			<div>{{ item.title }}</div>
@@ -12,6 +12,17 @@
 export default {
 	name: "kindcook",
 	props: ["arraylist"],
+	methods: {
+		look(item){
+			// console.log(item)
+			this.$router.push({
+				name:'lesson',
+					query:{
+					contentId:item.courseId||item.educationCourseId
+				}	
+			})
+		}
+	}
 };
 </script>
 <style lang="scss" scoped>

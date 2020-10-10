@@ -6,7 +6,7 @@
 		</div>
 		<div ref="scroll">
 			<ul class="scrollbody" ref='scrollbody'>
-				<li  v-for="item in arraylist" :key="item.contentId">
+				<li  v-for="item in arraylist" :key="item.contentId" @click="look(item)">
 					<img
 						:src="item.coverImage||item.verticalImages[0]"
 						alt=""
@@ -40,7 +40,16 @@ export default {
 			   }
 
 		   })
-        }
+		},
+		look(item){
+			// console.log(item)
+			this.$router.push({
+				name:'lesson',
+				query:{
+					contentId:item.courseId||item.educationCourseId
+				}
+			})
+		}
     },
     watch:{
         arraylist(value){

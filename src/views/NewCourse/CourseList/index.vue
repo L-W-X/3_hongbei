@@ -1,12 +1,12 @@
 <template>
 <div class="CourseListWrap">
-  <div class="CourseItem" v-for="item in courseItem" :key="item.educationCourseId">
+  <div class="CourseItem" v-for="item in courseItem" :key="item.educationCourseId" @click="openVideo(item.educationCourseId)">
 
-    <img :src="item.image" alt="">
+    <img :src="item.image">
 
     <div class="rightWrap">
       <p class="title">{{item.title}}</p>
-      <p class="freeLook">{{item.title?"免费试看":""}}</p>
+      <p class="freeLook">{{item.hasTrySeeVideo?"免费试看":""}}</p>
     </div>
   </div>
 </div>
@@ -27,6 +27,18 @@ export default {
     ...mapState({
       courseItem: state => state.newcourse.courseItem,
     })
+  },
+  methods: {
+    openVideo(contentId) {
+      this.$router.push({
+        name: "lesson",
+        query: {
+          contentId,
+          isHideBottom: 1,
+          playTryVideo: true
+        }
+      })
+    }
   },
   components: {
 

@@ -6,12 +6,12 @@
   </div>
 </van-overlay>
   <div class="hometop">
-    <img src="/image/plus.png" alt="" class="plus" />
+    <img src="/image/plus.png" alt="" class="plus" @click="$router.push('/backingdrafts')"/>
     <div class="homesearch">
       <img src="/image/search.png" alt="" />
       <input type="text" placeholder="搜索食谱/食材，烘焙/家常菜一应俱全" @focus="opensearch"/>
     </div>
-    <img src="/image/bell.png" alt="" class="bell" />
+    <img src="/image/bell.png" alt="" class="bell" @click="$router.push('/personal')"/>
   </div>
   <div class="navList">
     <div class='navitem' v-for="item in navlist" :key='item.categoryItemId' @click="openinfo(item.link)">

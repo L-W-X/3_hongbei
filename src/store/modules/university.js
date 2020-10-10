@@ -41,6 +41,7 @@ const actions ={
     },
     async getUHomeList_lwx({commit}){
         const res= await reqHomelist_lwx()
+        
         commit('GET_UHOMELIST_LWX',res.data.category)
     },
     async getUniversityItem_lwx({commit},id){
