@@ -15,6 +15,7 @@
 	    :arraylist="info.item"
 	    :moreLink="info.moreLink"
 	    :title="info.title"
+        :categoryId='info.categoryId'
 	    ></LessonScroll>
     </div>
     <div v-else>
@@ -28,7 +29,7 @@
 <script>
 import TabNav from './TabNav'
 import MSwiper from './Swiper'
-import Kindcook from './Kindcook'
+import Kindcook from '@/components/Kindcook'
 import LessonScroll from '@/components/LessonScroll'
 import {mapState,mapActions,mapMutations} from 'vuex'
 export default {

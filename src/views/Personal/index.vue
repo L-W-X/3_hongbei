@@ -2,7 +2,7 @@
   <div>
     <div class="content">
       <div class="topLeft">
-        <img src="https://image.hongbeibang.com/FlqyNFosCk9hhyBMoPkej9xbh_Yf?imageView2/1/w/50/h/50" alt="">
+        <img src="https://image.hongbeibang.com/FlqyNFosCk9hhyBMoPkej9xbh_Yf?imageView2/1/w/50/h/50" alt="" @click="backHome">
       </div>
       <div class="topLogin">登录</div>
     </div>
@@ -29,6 +29,11 @@
 <script>
 export default {
   name: 'Personal',
+  methods: {
+    backHome(){
+      this.$router.go(-1)
+    }
+  }
 }
 </script>
 

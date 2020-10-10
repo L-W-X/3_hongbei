@@ -11,57 +11,76 @@
 <!-- 标签滑块 -->
   <div class="labelList_fc">
     <div class="labelContent_fc">
-      <div class="labelItem_fc" v-for="item in Data" :key="item.communityId">
+      <div class="labelItem_fc" v-for="item in Data" :key="item.communityId" @click="hotAndNew">
         <div>{{item.name}}</div>
       </div>
     </div>
   </div>
   
  <!-- 作品展示 -->
-  <div class="show" v-for="(item,index) in content" :key="index">
-    <div class="showTop">
-      <div class="headPortrait">
-        <img :src="item.clientImage" alt="">
-      </div>
-      <div class="showContent">
-        <div class="showName">{{item.clientName}}</div>
-        <span class="showTime">{{item.createTime}} {{item.coverTitle}}</span>
-      </div>
-    </div>
-    <div class="showImg">
-      <div class="describe">
-        <span class="describe1">{{item.communityName}}</span>
-        <span>{{item.introduce}}</span>
-      </div>
-      <img :src="item.image" alt="">
-    </div>
 
-    <div class="showBotton" v-if="item.recipe.clientId !== 0">
-      <div class="showBottonImg">
-        <img :src="item.recipe.image" alt="">
-      </div>
-      <div class="showBottonRight" >
-        <div class="showBottonName">{{item.recipe.title}}</div>
-        <div class="showBottonAuthor">作者：{{item.recipe.clientName}}</div>
-      </div>
-    </div>
-    <!-- 评价 -->
-    <div class="evaluate">
-      <div class="evaluateItem">
-        <div><img src="https://image.hongbeibang.com/Fqv9VBHXG627znbKlZYnHQMTHVdc?200X200&imageView2/1/w/38/h/38" alt=""><span>点赞</span></div>
-        <div><img src="https://image.hongbeibang.com/Fi6E0gsACPeVV5_xgH5JBn6PN45m?200X200&imageView2/1/w/38/h/38" alt=""><span>打赏</span></div>
-        <div><img src="https://image.hongbeibang.com/FiZ5-B7_rmV_gnPl97P-FkpjSlij?200X200&imageView2/1/w/38/h/38" alt=""><span>评论</span></div>
-      </div>
-    </div>
-  </div>
+  <van-list v-model="loading" :finished="finished" finished-text="没有数据了" @load="onLoad" :immediate-check='false'>
+      <van-cell class="show" v-for="(item,index) in content" :key="index">
+        <div class="showTop">
+          <div class="headPortrait">
+            <img :src="item.clientImage" alt="">
+          </div>
+          <div class="showContent">
+            <div class="showName">{{item.clientName}}</div>
+            <span class="showTime">{{item.createTime}} {{item.coverTitle}}</span>
+          </div>
+        </div>
+        <div class="showImg">
+          <div class="describe">
+            <span class="describe1">{{item.communityName}}</span>
+            <span>{{item.introduce}}</span>
+          </div>
+          <img :src="item.image" alt="">
+        </div>
+
+        <div class="showBotton" v-if="item.recipe.clientId !== 0">
+          <div class="showBottonImg">
+            <img :src="item.recipe.image" alt="">
+          </div>
+          <div class="showBottonRight" >
+            <div class="showBottonName">{{item.recipe.title}}</div>
+            <div class="showBottonAuthor">作者：{{item.recipe.clientName}}</div>
+          </div>
+        </div>
+      
+        <div class="evaluate">
+          <div class="evaluateItem">
+            <div><img src="https://image.hongbeibang.com/Fqv9VBHXG627znbKlZYnHQMTHVdc?200X200&imageView2/1/w/38/h/38" alt=""><span>点赞</span></div>
+            <div><img src="https://image.hongbeibang.com/Fi6E0gsACPeVV5_xgH5JBn6PN45m?200X200&imageView2/1/w/38/h/38" alt=""><span>打赏</span></div>
+            <div><img src="https://image.hongbeibang.com/FiZ5-B7_rmV_gnPl97P-FkpjSlij?200X200&imageView2/1/w/38/h/38" alt=""><span>评论</span></div>
+          </div>
+        </div>
+      </van-cell>
+    </van-list>
 </div>
 
 </template>
 
 <script>
+// import ajax from '@/axios/ajax'
+// import axios from "axios";
 import {mapState,mapActions} from "vuex";
+
+import Vue from 'vue';
+import {List , Cell} from "vant";
+Vue.use(List);
+Vue.use(Cell);
+
 export default {
   name: 'BackingNew',
+  data () {
+    return {
+      content:[],
+      loading:false,
+      finished:false,
+      num :0
+    }
+  },
   
   computed: {
     ...mapState({
@@ -70,19 +89,35 @@ export default {
     ...mapState({
       Data:state=>state.backingNew.Data
     }),
-    ...mapState({
-      content:state=>state.backingNew.content
-    }),
   },
   mounted(){
     this.getReqCategory_fc(),
-    this.getReqByLimit_fc(),
+    this.getReqByLimit_fc()
     this.getReqNew_fc()
   },
   methods: {
     ...mapActions(['getReqCategory_fc']),
     ...mapActions(['getReqByLimit_fc']),
-    ...mapActions(['getReqNew_fc']),
+    async getReqNew_fc(){
+      const res = await this.$API.reqNew_fc(
+         this.num
+      )
+      this.content = this.content.concat(res.data.content)
+      this.loading=false
+
+    },
+    onLoad(){
+      this.loading=true   
+      this.num = this.num + 10
+      this.getReqNew_fc()
+    },
+
+    hotAndNew(){
+      this.$router.push({
+        name:"bakingnewandhot"
+      })
+    },
+    
   }
   
 
@@ -119,9 +154,10 @@ export default {
       }
     }
     .labelList_fc{
+      box-sizing: border-box;
       background: #fff;
       width: 100%;
-      height: 55px;
+      // height: 55px;
       overflow-x: auto;
       white-space: nowrap;
       -webkit-overflow-scrolling: touch;

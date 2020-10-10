@@ -1,6 +1,6 @@
 <template>
-  <div class="content">
-    <div class="show" v-for="(item,index) in content" :key="index">
+  <van-list class="content" v-model="loading" :finished="finished" finished-text="没有数据了" @load="onLoad" :immediate-check='false'>
+    <van-cell class="show" v-for="(item,index) in content" :key="index">
       <div class="showTop">
         <div class="headPortrait">
           <img :src="item.clientImage" alt="">
@@ -33,25 +33,53 @@
           <div><img src="https://image.hongbeibang.com/FiZ5-B7_rmV_gnPl97P-FkpjSlij?200X200&imageView2/1/w/38/h/38" alt=""><span>评论</span></div>
         </div>
       </div>
-    </div>
-  </div>
-  
+    </van-cell>
+  </van-list>
 </template>
 
 <script>
 import {mapState,mapActions} from "vuex";
+
+
+import Vue from 'vue';
+import {List , Cell} from "vant";
+Vue.use(List);
+Vue.use(Cell);
+
 export default {
   name: 'BackingTalent',
   computed: {
     ...mapState({
-      content:state=>state.backingTalent.content
+      Content:state=>state.backingTalent.Content
     })
   },
+  data () {
+    return {
+      content:[],
+      loading:false,
+      finished:false,
+      num:0
+    }
+  },
   mounted(){
+    
     this.getReqMasterNew_fc()
   },
   methods: {
-    ...mapActions(['getReqMasterNew_fc'])
+    ...mapActions(['getReqMasterNew_fc']),
+    async getReqMasterNew_fc(){
+      console.log(111);
+      const res =await this.$API.reqMasterNew_fc(
+        this.num
+      )
+      this.content = this.content.concat(res.data.content)
+      this.loading=false
+    },
+    onLoad(){
+      this.loading=true   
+      this.num = this.num + 10
+      this.getReqMasterNew_fc()
+    }
   }
 }
 </script>
@@ -106,6 +134,11 @@ export default {
         margin-bottom: 11px;
         .describe{
           margin: 10px 15px 11px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
           span{
             font-size: 14px;
             color:#4a4945;
@@ -184,5 +217,4 @@ export default {
       }
     }
   }
-  
 </style>

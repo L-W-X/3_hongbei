@@ -1,13 +1,13 @@
 <template>
 <div>
   <div class="header">
-    <img class="plus" src="/image/plus.png" alt="">   
+    <img class="plus" src="/image/plus.png" alt="" @click="goToDrafts">   
     <div class="navTop">
       <router-link class="link" :to="{name: 'follow'}">关注</router-link>
       <router-link class="link" :to="{name: 'new'}">最新</router-link>
       <router-link class="link" :to="{name: 'talent'}">达人</router-link>
     </div>
-    <img class="bell" src="/image/bell.png" alt="">
+    <img class="bell" src="/image/bell.png" alt="" @click="logo">
   </div>
   <router-view></router-view>
 </div>
@@ -15,7 +15,20 @@
 
 <script>
 export default {
-  name:'BakingRing'
+  name:'BakingRing',
+  methods: {
+    goToDrafts(){
+      this.$router.push({
+        name:"backingdrafts"
+      })
+    },
+    logo(){
+      this.$router.push({
+        name:"personal"
+      })
+    }
+
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -29,7 +42,7 @@ export default {
     top: 0;
     align-items: center;
     background: #fff;
-       
+    z-index: 9;
     .navTop{
       flex: 1;
       text-align: center;

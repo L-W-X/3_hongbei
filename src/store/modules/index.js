@@ -5,22 +5,32 @@ import qaNew from './qaNew'
 import qaHot from './qaHot'
 import qaEssence from './qaEssence'
 import university from './university'
+import lesson from './lesson'
+import homeWork from './HomeWork'
 import classification from './classification'
 import skill from './skill'
 import detail from './detail'
 
 
+import newcourse from './newcourse'
 
 export default{
     home,
     university,
+    lesson,
+    homeWork,
     classification,
     skill,
+
     backingNew,
     backingTalent,
     qaNew,
     qaHot,
     qaEssence,
     university,
-    detail
+    detail,
+
+
+    newcourse
+
 }
