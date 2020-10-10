@@ -22,10 +22,13 @@
       </div>
     </div>
   </div>
+  <Line1></Line1>
+  <Introduce></Introduce>
 </div>
 </template>
 
 <script>
+import Introduce from '@/components/Introduce'
 import Line1 from '@/components/Line'
 import {
   mapState,
@@ -60,7 +63,8 @@ export default {
     }
   },
   components: {
-    Line1
+    Line1,
+    Introduce
   }
 
 }
