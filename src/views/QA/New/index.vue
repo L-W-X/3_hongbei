@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <!-- <div>
     <div class="QA">
       <div class="qaNewContent" v-for="(item,index) in qaContent" :key="index">
         <div class="qaQuestion">{{item.coverTitle}}</div>
@@ -19,10 +19,14 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+  
+  
+  <Newhot :qaHotContent='qaContent'></Newhot>
 </template>
 
 <script>
+import Newhot from '@/components/NewHot';
 import {mapState,mapActions} from "vuex";
 export default {
   name: 'New',
@@ -36,76 +40,13 @@ export default {
   },
   methods: {
     ...mapActions(['getQaNew_fc']),
+  },
+  components: {
+    Newhot
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  .QA{
-    margin-top:90px;
-     padding: 0 15px;
-    .qaNewContent{
-     padding: 15px 0 10px;
-     border-bottom: 1px solid #e7e2e5;
-      .qaQuestion{
-        font-size: 18px;
-        color: #4a4945;
-        font-weight: bold;
-        margin-bottom: 5px;
-      }
-      .qaNewDescribe{
-        display: flex;
-        width: 345px;
-        height: 70px;
-        margin: 10px 0;
-        background: #F5F7F9;
-        img{
-          width: 70px;
-          height: 70px;
-          border-radius: 4px;
-        }
-        .qaNewRelease{
-          display: flex;
-          flex-flow: column;
-          justify-content:space-evenly;
-          margin-left:15px ;
-          .qaNewName{
-            font-size: 14px;
-            color: #313131;
-            font-weight: bold;
-          }
-          .qaNewId{
-            font-size: 13px;
-            color: #999;
-          }
-        }
-      }
-      .Qabottom{
-        width: 100%;
-        height: 20px;
-        display: flex;
-        justify-content: space-between;
-        line-height: 20px;
-        .QabottomLeft{
-          font-size: 14px;
-          color: #498dd0;
-          width: 273px;
-          height: 20px;
-        }
-        .QabottomRight{
-          height: 22px;
-          display: flex;
-          img{
-            width: 19px;
-            height: 19px;
-            margin-right: 5px;
-          }
-          span{
-            font-size: 14px;
-            color: #e98b71;
-          }
-        }
-      }
-    }
-  }
+  
 </style>

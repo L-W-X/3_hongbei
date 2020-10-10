@@ -10,10 +10,6 @@ import classification from './classification'
 import skill from './skill'
 import newcourse from './newcourse'
 
-
-
-
-
 export default{
     home,
     university,

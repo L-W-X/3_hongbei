@@ -1,4 +1,4 @@
-import {reqMasterNew_fc} from "@/axios/index.js"
+// import {reqMasterNew_fc} from "@/axios/index.js"
 
 const state={
   content:[]
@@ -9,9 +9,12 @@ const mutations={
     // console.log(state.content);
   }
 }
+
 const actions={
   async getReqMasterNew_fc({commit}){
+    // console.log(id)
     const res = await reqMasterNew_fc()
+    // console.log(res.data.content)
     commit("GET_MASTER_NEW_FC",res.data.content)
   },
 }

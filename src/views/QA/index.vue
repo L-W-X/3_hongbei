@@ -17,9 +17,21 @@
 </template>
 
 <script>
+import {mapState,mapActions} from "vuex";
+// import Hot from "./Hot"
 export default {
   name:'QA',
+  components: {
+    
+  },
+  computed: {
+
+  },
+  mounted(){
+ 
+  },
   methods: {
+
     logo(){
       this.$router.push({
         name:"personal"
