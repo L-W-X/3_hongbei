@@ -9,6 +9,8 @@ import lesson from './lesson'
 import classification from './classification'
 import skill from './skill'
 import newcourse from './newcourse'
+import search from './search'
+import searchlive from './searchlive'
 
 
 
@@ -20,15 +22,14 @@ export default{
     lesson,
     classification,
     skill,
-
     backingNew,
     backingTalent,
     qaNew,
     qaHot,
     qaEssence,
     university,
-
-
-    newcourse
+    newcourse,
+    search,
+    searchlive
 
 }

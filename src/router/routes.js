@@ -4,6 +4,8 @@ const Personal =()=>import("@/views/Personal")
 const QA =()=>import("@/views/QA")
 const university =()=>import("@/views/VideoSchool")
 const seemore =()=>import("@/views/SeeMore")
+const search =()=>import("@/views/Search")
+const searchlive =()=>import("@/views/SearchLive")
 const Lesson =()=>import("@/views/Lesson") //cq_课程视频
 const classIfication =()=>import("@/views/ClassIfIcation")
 const skill =()=>import("@/views/skill")
@@ -132,6 +134,23 @@ export default[
             isHideFooter: true,
            
         }  
+    },
+    {
+        name:'search',
+        path:'/search',
+        component: search,
+        meta:{
+            isHideFooter: true,
+        }
+
+    },
+    {
+        name:'searchlive',
+        path:'/search/live/:keyword',
+        component: searchlive,
+        meta:{
+            isHideFooter: true,
+        }
     },
     
     {

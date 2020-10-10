@@ -1,7 +1,7 @@
 <template>
 <div class="newCourseWrap">
   <div class="headerImage" v-for="(item,index) in newCourse.images" :key="index">
-    <img :src="item"></img>
+    <img :src="item">
   </div>
   <div class="titleWrap">
     <div class="title">{{newCourse.title}}</div>

@@ -1,10 +1,15 @@
 <template>
 <div class="home">
+  <van-overlay :show="show" z-index='99999'>
+  <div class="wrapper" >
+    <img src='/image/666.gif' class="block" />
+  </div>
+</van-overlay>
   <div class="hometop">
     <img src="/image/plus.png" alt="" class="plus" />
     <div class="homesearch">
       <img src="/image/search.png" alt="" />
-      <input type="text" placeholder="搜索食谱/食材，烘焙/家常菜一应俱全" />
+      <input type="text" placeholder="搜索食谱/食材，烘焙/家常菜一应俱全" @focus="opensearch"/>
     </div>
     <img src="/image/bell.png" alt="" class="bell" />
   </div>
@@ -25,6 +30,7 @@
     </div>
   </div>
 </div>
+
 </template>
 
 <script>
@@ -33,7 +39,15 @@ import {
   mapActions
 } from 'vuex'
 import LessonScroll from '@/components/LessonScroll'
+import Vue from 'vue';
+import { Overlay } from 'vant';
+Vue.use(Overlay);
 export default {
+  data(){
+    return {
+      show: true
+    }
+  },
 	name: "Home",
 	computed:{
 		...mapState({
@@ -43,10 +57,11 @@ export default {
 
 		})
 	},
-	mounted(){
-		this.getNavList_lwx()
-		this.getRecommend_lwx()
-		this.getHomeList_lwx()
+	async mounted(){
+		await this.getNavList_lwx()
+		 await this.getRecommend_lwx()
+     await this.getHomeList_lwx()
+     this.show=false
 	},
 	methods:{
 		...mapActions(['getNavList_lwx','getRecommend_lwx','getHomeList_lwx']),
@@ -61,7 +76,10 @@ export default {
         this.$router.push("/newcourse")
       }
 
-		}
+    },
+    opensearch(){
+      this.$router.push('search')
+    }
 	},
 	components:{
 		LessonScroll
@@ -73,7 +91,19 @@ export default {
 .home {
   padding-bottom: 50px;
   padding-top: 44px;
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+    background-color: #fff;
+  }
 
+  .block {
+    width: 300px;
+    background-color: #fff;
+  }
   .hometop {
     position: fixed;
     top: 0;

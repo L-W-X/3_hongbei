@@ -3,7 +3,12 @@
     <div class='universityTop'>
         <TabNav class='university' :navlist='navlist' :categoryId='categoryId' :changeid='changeid'></TabNav>
         <div class='imgContainer'>
-            <img src="/image/search.png" alt="">
+            <img src="/image/search.png" alt="" @click="$router.push({
+                name:'search',
+                query:{
+                    type:'live'
+                }
+            })">
         </div>
         
     </div>

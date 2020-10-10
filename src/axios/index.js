@@ -51,7 +51,18 @@ export const reqUniversityItem_lwx=(id)=>ajax.get('/index/getIndexItem',{
         categoryId: id, 
     }
 })
-export const reqCategoryList = () => ajax('/education/getIndexByWeb')
+//获取热门搜索
+export const reqHotsearch_lwx=()=>ajax('/keyword/detail')
+//搜索关键字
+export const reqSearchlive_lwx=(keywords, pageIndex=0,pageSize=10)=>ajax.get('/search/getMoreCourse',{
+   params:{
+       keyword: keywords,
+       pageIndex,
+       pageSize
+   }
+    
+
+})
 
 //cq_课程视频  
 export const reqLessonModule =(educationCourseId,date) => ajax({
