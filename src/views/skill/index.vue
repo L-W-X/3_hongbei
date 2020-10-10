@@ -7,11 +7,13 @@
       <img :src="item.image" alt="" />
       <div class="item">{{ item.title }}</div>
     </div>
+    <App class="adv"></App>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from "vuex";
+import App from "../../components/app"
 export default {
   name: "skill",
   mounted() {
@@ -28,22 +30,31 @@ export default {
       this.$router.go(-1)
     }
   },
+  components:{
+    App,
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .top {
-  margin-bottom:140px;
+  padding-bottom:140px;
+  padding-top:60px;
   width: 100%;
   .image{
     width: 100%;
     height: 44px;
     line-height: 44px;
     padding:0 18px;
+    position:fixed;
+    top:0;
+    left:0;
+    background-color:#fff;
     img{
       width: 27px;
       height: 27px;
       margin:9.5px 0;
+      
     }
   }
   .hander {
@@ -70,5 +81,11 @@ export default {
       flex-wrap: wrap;
     }
   }
+}
+.adv{
+  position:fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #FFF;
 }
 </style>

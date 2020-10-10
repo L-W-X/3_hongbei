@@ -10,7 +10,9 @@
             class="itemBottom"
             v-for="(info, index) in item.classifys ? item.classifys : item.list"
             :key="index"
+            @click="detail(info)"
           >
+       
             <img :src="info.image" alt="" />
             <span class="item1">{{ info.name }}</span>
           </div>
@@ -45,7 +47,20 @@ export default {
     },
   },
   computed: {},
-  methods: {},
+  methods: {
+    detail(item){
+      // console.log(item)
+				this.$router.push({
+          name:'detail',
+          params:{
+            keyword:item.name
+          },
+          query:{
+            classifyId:item.classifyId
+          }
+        })
+    }
+  },
 };
 </script>
 <style lang="scss" scoped>

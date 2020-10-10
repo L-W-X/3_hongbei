@@ -165,3 +165,22 @@ export const reqSkill_wkx=()=>ajax.get('/education/getNewbieGuide',{
         type: 5
     }
 })
+//
+export const reqVideo_wkx=(keyword="keyword",sort,pageIndex,pageSize=10,)=>ajax.get('/search/getMoreRecipe',{
+    params:{
+       
+        pageIndex,
+        pageSize,
+        keyword,
+        sort
+    }
+})
+//视频search/getMoreCourse
+export const reqCourse_wkx=(pageIndex=0,pageSize=10,keyword="keyword")=>ajax.get('/search/getMoreCourse',{
+    params:{
+        
+        pageIndex:pageIndex,
+        pageSize:pageSize,
+        keyword:keyword
+    }
+})

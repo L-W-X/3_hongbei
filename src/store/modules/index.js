@@ -9,6 +9,9 @@ import lesson from './lesson'
 import homeWork from './HomeWork'
 import classification from './classification'
 import skill from './skill'
+import detail from './detail'
+
+
 import newcourse from './newcourse'
 import search from './search'
 import searchlive from './searchlive'
@@ -28,6 +31,9 @@ export default{
     university,
     newcourse,
     search,
-    searchlive
+    searchlive,
+    detail,
+
+
 
 }

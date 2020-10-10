@@ -10,6 +10,11 @@ const Lesson =()=>import("@/views/Lesson") //cq_课程视频
 const HomeWork =()=>import("@/views/HomeWork") //cq_学员作业
 const classIfication =()=>import("@/views/ClassIfIcation")
 const skill =()=>import("@/views/skill")
+const detail=()=>import("@/views/detail")
+// const sorting=()=>import("@/views/sorting")
+// const most=()=>import("@/views/most")
+// const recipe=()=>import("@/views/recipe")
+
 const BakingFollow =()=>import("@/views/BakingRing/BakingFollow")   //fc-烘焙圈-关注
 const BakingNew =()=>import("@/views/BakingRing/BakingNew")         //fc-烘焙圈-最新
 const BakingTalent =()=>import("@/views/BakingRing/BakingTalent")   //fc-烘焙圈-达人
@@ -170,24 +175,15 @@ export default[
     }
     },
     
-    {
-        
-        name:'dish',
-        path:'/dish',
-        component: dish,
-        meta:{
-            isHideFooter: true,
-           
-        }
-    },
+    
     {
         name:'seemore',
         path:'/seemore',
         component: seemore,
         meta:{
             isHideFooter: true,
-           
-        }  
+        }
+        
     },
     {
         name:'search',
@@ -251,7 +247,34 @@ export default[
         component: newcourse,
         meta:{
             isHideFooter: true,
+        }
+    },
+    {
+        name:'detail',
+        path:'/search/recipe/detail/:keyword',
+        component:detail,
+        meta:{
+            isHideFooter: true,
         },
+        // children:[
+        //     {
+        //         name:'sorting',
+        //         path:'/sorting',
+        //         component:sorting,
+        //     },
+        //     {
+        //         name:'most',
+        //         path:'most',
+        //         component:most,
+        //     },
+        //     {
+        //         name:'recipe',
+        //         path:'recipe',
+        //         component:recipe,
+        //     }
+        // ]
+    
+    
        
     },
     {
