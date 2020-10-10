@@ -1,6 +1,6 @@
 <template>
-  <div class="Essence">
-      <div class="essenceContent" v-for="(item,index) in qaEssenceContent" :key="index">
+  <van-list class="Essence" v-model="loading" :finished="finished" finished-text="没有数据了" @load="onLoad" :immediate-check='false'>
+      <van-cell class="essenceContent" v-for="(item,index) in content" :key="index">
         <div class="essenceTop">
           <img :src="item.clientImage" alt="">
           <span>{{item.clientName}}</span>
@@ -8,12 +8,18 @@
         <div class="es_Problem">{{item.coverTitle}}</div>
         <div class="es_Answer">{{item.coverSummary}}</div>
         <div class="fabulous">{{item.hotNum}}个赞</div>
-      </div>
-  </div>
+      </van-cell>
+  </van-list>
 </template>
 
 <script>
 import {mapState,mapActions} from "vuex";
+
+import Vue from 'vue';
+import {List , Cell} from "vant";
+Vue.use(List);
+Vue.use(Cell);
+
 export default {
   name: 'Essence',
   computed: {
@@ -21,11 +27,32 @@ export default {
       qaEssenceContent:state=>state.qaEssence.qaEssenceContent
     }),
   },
+  data () {
+    return {
+      content:[],
+      loading:false,
+      finished:false,
+      num:0
+    }
+  },
   mounted(){
     this.getQaEssence_fc()
   },
   methods: {
     ...mapActions(['getQaEssence_fc']),
+    async getQaEssence_fc(){
+      console.log(111);
+      const res =await this.$API.QaEssence_fc(
+        this.num
+      )
+      this.content = this.content.concat(res.data.content.data)
+      this.loading=false
+    },
+    onLoad(){
+      this.loading=true   
+      this.num = this.num + 10
+      this.getQaEssence_fc()
+    }
   }
 }
 </script>
@@ -56,6 +83,11 @@ export default {
         font-size: 18px;
         color: #4a4945;
         font-weight:bold;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
       }
       .es_Answer{
         width: 100%;
@@ -66,7 +98,7 @@ export default {
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
       }
       .fabulous{

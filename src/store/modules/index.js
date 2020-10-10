@@ -13,10 +13,6 @@ import newcourse from './newcourse'
 import search from './search'
 import searchlive from './searchlive'
 
-
-
-
-
 export default{
     home,
     university,

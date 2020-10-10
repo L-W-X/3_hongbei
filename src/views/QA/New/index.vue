@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="QA">
-      <div class="qaNewContent" v-for="(item,index) in qaContent" :key="index">
+    <van-list class="QA" v-model="loading" :finished="finished" finished-text="没有数据了" @load="onLoad" :immediate-check='false'>
+      <van-cell class="qaNewContent" v-for="(item,index) in content" :key="index">
         <div class="qaQuestion">{{item.coverTitle}}</div>
         <div class="qaNewDescribe">
           <img :src="item.recipe.image" alt="">
@@ -17,13 +17,19 @@
             <span>写答案</span>
           </div>
         </div>
-      </div>
-    </div>
+      </van-cell>
+    </van-list>
   </div>
 </template>
 
 <script>
 import {mapState,mapActions} from "vuex";
+
+import Vue from 'vue';
+import {List , Cell} from "vant";
+Vue.use(List);
+Vue.use(Cell);
+
 export default {
   name: 'New',
   computed: {
@@ -31,11 +37,32 @@ export default {
       qaContent:state=>state.qaNew.qaContent
     }),
   },
+  data () {
+    return {
+      content:[],
+      loading:false,
+      finished:false,
+      num:0
+    }
+  },
   mounted(){
     this.getQaNew_fc()
   },
   methods: {
     ...mapActions(['getQaNew_fc']),
+    async getQaNew_fc(){
+      console.log(111);
+      const res =await this.$API.QaNew_fc(
+        this.num
+      )
+      this.content = this.content.concat(res.data.content.data)
+      this.loading=false
+    },
+    onLoad(){
+      this.loading=true   
+      this.num = this.num + 10
+      this.getQaNew_fc()
+    }
   }
 }
 </script>
@@ -52,6 +79,11 @@ export default {
         color: #4a4945;
         font-weight: bold;
         margin-bottom: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
       }
       .qaNewDescribe{
         display: flex;

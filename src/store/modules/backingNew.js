@@ -1,6 +1,6 @@
 import {reqCategory_fc} from "@/axios/index.js"
 import {reqByLimit_fc} from "@/axios/index.js"
-import {reqNew_fc} from "@/axios/index.js"
+// import {reqNew_fc} from "@/axios/index.js"
 
 const state={
   category:[],

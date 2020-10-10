@@ -1,4 +1,4 @@
-import {QaEssence_fc} from "@/axios/index.js"
+// import {QaEssence_fc} from "@/axios/index.js"
 
 const state={
   qaEssenceContent:[]

@@ -14,7 +14,9 @@ const BakingFollow =()=>import("@/views/BakingRing/BakingFollow")   //fc-烘焙�
 const BakingNew =()=>import("@/views/BakingRing/BakingNew")         //fc-烘焙圈-最新
 const BakingTalent =()=>import("@/views/BakingRing/BakingTalent")   //fc-烘焙圈-达人
 const BakingDrafts =()=>import("@/views/BakingRing/BakingDrafts")   //fc-烘焙圈-草稿箱
-
+const BakingNewAndHot =()=>import("@/views/BakingRing/BakingNewAndHot")   //fc-烘焙圈-tag标签点击之后的页面
+const Baking_hot =()=>import("@/views/BakingRing/BakingNewAndHot/Baking_hot")  //BakingNewAndHot下的最热   fc
+const Baking_new =()=>import("@/views/BakingRing/BakingNewAndHot/Baking_new")  //BakingNewAndHot下的最新   fc
 
 const Essence =()=>import("@/views/QA/Essence")             //fc-问答-精华问题
 const New =()=>import("@/views/QA/New")                     //fc-问答-最新问题
@@ -33,6 +35,33 @@ export default[
             isHideFooter: false,
             isActive:0
         }
+    },
+    {
+        name:"bakingnewandhot",    //fc-烘焙圈内的最新最热
+        path:"/bakingnewandhot",
+        component:BakingNewAndHot,
+        children:[
+            {
+                name:'baking-hot',
+                path:'baking-hot',
+                component:Baking_hot,
+                meta:{
+                    isHideFooter:true
+                }
+            },
+            {
+                name:'baking-new',
+                path:'baking-new',
+                component:Baking_new,
+                meta:{
+                    isHideFooter:true
+                }
+            },
+            {
+                path:'',redirect: {name:'baking-new'},
+            },
+        ]
+        
     },
     {
         name:"backingdrafts",    //fc-烘焙圈内的草稿箱
