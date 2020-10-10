@@ -5,7 +5,10 @@ const QA =()=>import("@/views/QA")
 const university =()=>import("@/views/VideoSchool")
 const classIfication =()=>import("@/views/ClassIfIcation")
 const skill =()=>import("@/views/skill")
-
+const detail=()=>import("@/views/detail")
+// const sorting=()=>import("@/views/sorting")
+// const most=()=>import("@/views/most")
+// const recipe=()=>import("@/views/recipe")
 
 const BakingFollow =()=>import("@/views/BakingRing/BakingFollow")   //fc-烘焙圈-关注
 const BakingNew =()=>import("@/views/BakingRing/BakingNew")         //fc-烘焙圈-最新
@@ -119,7 +122,8 @@ export default[
         component:classIfication,
         meta:{
             isHideFooter: true,
-        }
+        },
+        
     },
     {
         name:'skill',
@@ -128,5 +132,30 @@ export default[
         meta:{
             isHideFooter: true,
         }
+    },
+    {
+        name:'detail',
+        path:'/search/recipe/detail/:keyword',
+        component:detail,
+        meta:{
+            isHideFooter: true,
+        },
+        // children:[
+        //     {
+        //         name:'sorting',
+        //         path:'/sorting',
+        //         component:sorting,
+        //     },
+        //     {
+        //         name:'most',
+        //         path:'most',
+        //         component:most,
+        //     },
+        //     {
+        //         name:'recipe',
+        //         path:'recipe',
+        //         component:recipe,
+        //     }
+        // ]
     }
 ]

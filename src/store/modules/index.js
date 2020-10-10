@@ -7,6 +7,7 @@ import qaEssence from './qaEssence'
 import university from './university'
 import classification from './classification'
 import skill from './skill'
+import detail from './detail'
 
 
 
@@ -20,5 +21,6 @@ export default{
     qaNew,
     qaHot,
     qaEssence,
-    university
+    university,
+    detail
 }

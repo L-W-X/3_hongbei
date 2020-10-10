@@ -2,7 +2,7 @@
    <div class="container">
        <div class="hander">
            <img src="/image/back.png" @click="back">
-           <input type="text" placeholder="搜索食谱/食材，烘焙/家常菜一应俱全">
+           <input type="text" placeholder="搜索食谱/食材，烘焙/家常菜一应俱全" @click="this.$router.push('/search')">
        </div>
        <div class="scroll">
            <div class='left'>

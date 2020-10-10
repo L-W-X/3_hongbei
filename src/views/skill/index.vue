@@ -7,11 +7,13 @@
       <img :src="item.image" alt="" />
       <div class="item">{{ item.title }}</div>
     </div>
+    <App></App>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from "vuex";
+import App from "../../components/app"
 export default {
   name: "skill",
   mounted() {
@@ -28,6 +30,9 @@ export default {
       this.$router.go(-1)
     }
   },
+  components:{
+    App,
+  }
 };
 </script>
 
