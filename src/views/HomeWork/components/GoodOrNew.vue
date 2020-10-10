@@ -102,6 +102,7 @@ export default {
     border: 1px solid #F5F7F9;
     display: inline-flex;
     flex-direction: column;
+    padding:0;
     .showImg{
       width: 100%;
       height: 166px;

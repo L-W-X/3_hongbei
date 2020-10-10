@@ -16,8 +16,8 @@
       </div>
     </div>
     <!-- <goodOrNew :active="active"></goodOrNew> -->
-    <goodOrNew :goodOrNew="goodList" v-show="active"></goodOrNew>
-    <goodOrNew :goodOrNew="newList" v-show="!active"></goodOrNew>
+    <goodOrNew :goodOrNew="goodList" v-if="active"></goodOrNew>
+    <goodOrNew :goodOrNew="newList" v-else></goodOrNew>
   </div>
 </template>
 
