@@ -161,6 +161,16 @@ export default[
         }
     },
     {
+       name:'university' ,
+       path:'/university',
+       component: university,
+       meta:{
+        isHideFooter: true,
+       
+    }
+    },
+    
+    {
         
         name:'dish',
         path:'/dish',
