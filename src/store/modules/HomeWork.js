@@ -6,10 +6,10 @@ const state={
 }
 const mutations={
   CHANGE_GOOD_LIST(state,data){
-    state.goodList = data
+    state.goodList = [...state.goodList,...data]
   },
   CHANGE_NEW_LIST(state,data){
-    state.newList = data
+    state.newList = [...state.newList,...data]
   }
 }
 const actions={

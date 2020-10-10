@@ -33,8 +33,7 @@ export default {
   name: 'GoodOrNew',
   data () {
     return {
-      list:[],
-      loading: true,
+      // loading: false,
       finished:false,
       pageIndex:0
       // pageIndex:0,
@@ -44,8 +43,7 @@ export default {
   },
   props:{
     goodOrNew:Array,
-    // loading:Boolean,
-    active:Boolean
+    loading:Boolean,
   },
   computed: {
     // ...mapState({
@@ -53,9 +51,6 @@ export default {
     // })
   },
   mounted () {
-    // if(this.active){
-    //   this.list = // 获得商品信息
-    // }
     // this.getNewList()
     this.$bus.$on('changeLoading',this.changeLoading)
   },
@@ -67,21 +62,13 @@ export default {
       })
     },
     onLoad(){
-      // console.log(this.loading)
-    
-      // if(this.loading){
-        // console.log(33333)
-        // this.loading = false;
-        this.pageIndex += 10
-        this.$bus.$emit('changeIndex',this.pageIndex)
-      // }
-     
+      console.log(33333)
+      this.loading = true
+      this.pageIndex += 10
+      this.$bus.$emit('changeIndex',this.pageIndex)
     },
-    changeLoading(bol){
-      
-      this.loading = bol;
-      console.log(this.loading,bol)
-
+    changeLoading(){
+      this.loading = false
     }
   }
 }

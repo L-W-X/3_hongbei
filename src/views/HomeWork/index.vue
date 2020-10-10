@@ -15,6 +15,7 @@
         </div>
       </div>
     </div>
+    <!-- <goodOrNew :active="active"></goodOrNew> -->
     <goodOrNew :goodOrNew="goodList" v-show="active"></goodOrNew>
     <goodOrNew :goodOrNew="newList" v-show="!active"></goodOrNew>
   </div>
@@ -44,21 +45,36 @@ export default {
   },
   mounted () {
     this.getNewList(),
-    this.getGoodList()
+    // this.getGoodList(),
+    this.$bus.$on('changeIndex',this.changeIndex)
   },
   methods: {
     back(){
       this.$router.go(-1)
     },
-    getNewList() {
+    async getNewList() {
       const educationCourseId = this.$route.query.contentId;
       const { date, pageIndex, pageSize } = this;
-      this.$store.dispatch("getNewList", {educationCourseId,date,pageIndex,pageSize});
+      await this.$store.dispatch("getNewList", {educationCourseId,date,pageIndex,pageSize});
+      this.$bus.$emit("changeLoading")
     },
-    getGoodList() {
+    async getGoodList() {
+      // console.log(222222222)
+       this.$bus.$emit("changeLoading",true);
       const educationCourseId = this.$route.query.contentId;
       const { date, pageIndex, pageSize } = this;
-      this.$store.dispatch("getGoodList", {educationCourseId,date,pageIndex,pageSize});
+      await this.$store.dispatch("getGoodList", {educationCourseId,date,pageIndex,pageSize});
+      this.$bus.$emit("changeLoading",false)
+    },
+    changeIndex(index){
+      // console.log(33333)
+      this.pageIndex = index
+      const {active} = this
+      if (active) {
+        this.getGoodList()
+      }else{
+        this.getNewList()
+      }
     }
   }
 }
