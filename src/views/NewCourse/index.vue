@@ -13,19 +13,20 @@
       </div>
     </div>
   </div>
-  <nyt1 @click="showPopup"></nyt1>
+  <nyt1></nyt1>
   <!--tab栏-->
-  <div class="tabWrap">
-    <div :class="active==0?'active':''" @click="change(0)">课程介绍</div>
-    <div :class="active==1?'active':''" @click="change(1)">课程目录</div>
-    <div :class="active==2?'active':''" @click="change(2)">学员作业</div>
+  <div class="tabWrap" id="station">
+    <div :class="active==0?'active':''" @click="change(0)"> <a href="#station">课程介绍</a></div>
+    <div :class="active==1?'active':''" @click="change(1)"><a href="#station">课程目录</a></div>
+    <div :class="active==2?'active':''" @click="change(2)"><a href="#station">学员作业</a></div>
   </div>
   <div>
     <CourseInduce v-show="active===0"></CourseInduce>
     <CourseList v-show="active===1"></CourseList>
     <StudentWork v-show="active===2"></StudentWork>
   </div>
-
+  <Line1></Line1>
+  <Introduce></Introduce>
 </div>
 </template>
 
@@ -34,6 +35,8 @@ import {
   mapState,
   mapActions
 } from 'vuex'
+import Introduce from '@/components/Introduce'
+import Line1 from '@/components/Line'
 import nyt1 from "@/components/Nyt1"
 import CourseInduce from "./CourseInduce"
 import CourseList from "./CourseList"
@@ -55,11 +58,10 @@ export default {
   computed: {
     ...mapState({
       newCourse: state => state.newcourse.newCourse,
-     
 
     })
   },
-  
+
   mounted() {
     this.getReqNewCourse_nyt()
     this.getReqNewCourseItem_nyt()
@@ -78,6 +80,8 @@ export default {
   },
   components: {
     nyt1,
+    Introduce,
+    Line1,
     CourseInduce,
     CourseList,
     StudentWork
@@ -86,6 +90,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+a {
+  text-decoration: none;
+  color: #333;
+}
+
 .newCourseWrap {
   ul {
     list-style: disc;

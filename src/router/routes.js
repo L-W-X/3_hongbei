@@ -5,6 +5,7 @@ const QA =()=>import("@/views/QA")
 const university =()=>import("@/views/VideoSchool")
 const seemore =()=>import("@/views/SeeMore")
 const Lesson =()=>import("@/views/Lesson") //cq_课程视频
+const HomeWork =()=>import("@/views/HomeWork") //cq_学员作业
 const classIfication =()=>import("@/views/ClassIfIcation")
 const skill =()=>import("@/views/skill")
 const BakingFollow =()=>import("@/views/BakingRing/BakingFollow")   //fc-烘焙圈-关注
@@ -179,6 +180,15 @@ export default[
         name:'lesson',
         path:'/lesson',
         component:Lesson,
+        meta: { 
+            isHideFooter: true
+         }
+    },
+    {
+        //cq_学员作业
+        name:'homeWork',
+        path:'/university/dishrank', //
+        component:HomeWork,
         meta: { 
             isHideFooter: true
          }
