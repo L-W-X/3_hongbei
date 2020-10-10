@@ -18,7 +18,7 @@
 
 <script>
 import {mapState,mapActions} from "vuex";
-// import Hot from "./Hot"
+
 export default {
   name:'QA',
   components: {
@@ -46,6 +46,7 @@ export default {
     height: 90px;
     position: fixed;
     background: #fff;
+    z-index: 9;
     top: 0;
     .QATop{
       width: 100%;

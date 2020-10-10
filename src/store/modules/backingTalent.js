@@ -1,11 +1,11 @@
 // import {reqMasterNew_fc} from "@/axios/index.js"
 
 const state={
-  content:[]
+  Content:[]
 }
 const mutations={
   GET_MASTER_NEW_FC(state,data){
-    state.content = data
+    state.Content = data
     // console.log(state.content);
   }
 }

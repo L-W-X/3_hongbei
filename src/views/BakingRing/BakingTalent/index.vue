@@ -1,5 +1,5 @@
 <template>
-  <van-list class="content" v-model="loading" finished="finished" finished-text="没有数据了" @load="onLoad" :immediate-check='false'>
+  <van-list class="content" v-model="loading" :finished="finished" finished-text="没有数据了" @load="onLoad" :immediate-check='false'>
     <van-cell class="show" v-for="(item,index) in content" :key="index">
       <div class="showTop">
         <div class="headPortrait">
@@ -46,13 +46,11 @@ import {List , Cell} from "vant";
 Vue.use(List);
 Vue.use(Cell);
 
-
-
 export default {
   name: 'BackingTalent',
   computed: {
     ...mapState({
-      content:state=>state.backingTalent.content
+      Content:state=>state.backingTalent.Content
     })
   },
   data () {
@@ -70,6 +68,7 @@ export default {
   methods: {
     ...mapActions(['getReqMasterNew_fc']),
     async getReqMasterNew_fc(){
+      console.log(111);
       const res =await this.$API.reqMasterNew_fc(
         this.num
       )
@@ -77,17 +76,145 @@ export default {
       this.loading=false
     },
     onLoad(){
-      this.$refs.son.loading=true   
+      this.loading=true   
       this.num = this.num + 10
       this.getReqMasterNew_fc()
-    },
-  },
-  components: {
-    // NewTalent
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  
+  .content{
+    background: #F5F7F9;
+    margin-top: 44px;
+    .show{
+      background: #fff;
+      width: 100%;
+      // height: 409px;
+      
+      .showTop{
+        width: 345px;
+        height: 44px;
+        margin: 15px 15px;
+        display: flex;
+        .headPortrait{
+          img{
+            width: 38px;
+            height: 38px;
+            border-radius:50%;
+            margin:10px 10px 0 0;
+          }
+        }
+        .showContent{
+          display: flex;
+          flex-flow: column;
+          .showName{
+            display: flex;
+            height: 40px;
+            line-height: 40px;
+            font-size: 13px;
+            color: #4a4945;
+            margin-top: 3px;
+            img{
+              width: 40px;
+              height: 40px;
+              margin-right: 5px;
+            }
+          }
+          .showTime{
+            height: 10px;
+            line-height: 1px;
+            font-size: 12px;
+            color: #999;
+          }
+        }
+      }
+      .showImg{
+        margin-bottom: 11px;
+        .describe{
+          margin: 10px 15px 11px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          span{
+            font-size: 14px;
+            color:#4a4945;
+          }
+          .describe1{
+            color:#498dd0 ;
+          }
+        }
+        img{
+          max-width: 355px;
+          max-height: 110px;
+          margin-left: 15px;
+        }
+      }
+      .showBotton{
+        background: #F5F7F9;
+        width: 345px;
+        height: 70px;
+        display:flex;
+        margin-left: 15px;
+        margin-bottom: 15px;
+        .showBottonImg{
+          img{
+            width: 70px;
+            height: 70px;
+            border-radius: 5px;
+          }
+        }
+        .showBottonRight{
+          display:flex;
+          flex-flow: column;
+          margin-left: 15px;
+          .showBottonName{
+            font-size: 14px;
+            color: #313131;
+            font-weight: bold;
+            margin-top: 15px;
+         }
+          .showBottonAuthor{
+            font-size: 13px;
+            color: #999;
+            margin-top: 5px;
+          }
+        } 
+      }
+      .evaluate{
+        width: 100%;
+        height:30px;
+        border-top: 1px solid #e7e2e5;
+        .evaluateItem{
+          margin: 0 15px;
+          display: flex;
+          div{
+            display: flex;
+            width: 123px;
+            height: 20px;
+            margin: 4px 0 0;
+            font-size: 12px;
+            color: #999;
+            justify-content: center;
+            &:nth-child(2){
+              border-left: 1px solid #e7e2e5;
+              border-right: 1px solid #e7e2e5;
+            }
+            span{
+              height: 20px;
+              line-height: 20px;
+            }
+            img{
+              width: 19px;
+              height: 19px;
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
 </style>
