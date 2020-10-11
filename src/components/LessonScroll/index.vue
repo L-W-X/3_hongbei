@@ -8,8 +8,9 @@
 			<ul class="scrollbody" ref='scrollbody'>
 				<li  v-for="item in arraylist" :key="item.contentId" @click="look(item)">
 					<img
-						:src="item.coverImage||item.verticalImages[0]"
+					
 						alt=""
+						v-lazy='item.coverImage||item.verticalImages[0]'
 					/>
 					<span> {{item.buyNum>1000?'1000+':item.buyNum}}在学 </span>
 					<div>{{item.title}}</div>
@@ -95,7 +96,7 @@ export default {
 .srollContainer {
 	width: 100%;
 	overflow: hidden;
-    touch-action: none;
+    
 	.titlebody {
 		padding: 25px 15px 10px;
 		display: flex;
@@ -117,6 +118,7 @@ export default {
         display: inline-block; 
 		white-space: nowrap;
         list-style: none;
+		// touch-action: none;
 		li {
 			margin-right: 10px;
 			position: relative;
